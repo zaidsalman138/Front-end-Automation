@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Selenium Java Hybrid Framework Suite" verbose="1" parallel="tests" thread-count="5">
+    <test name="Login Functionality Tests">
+        <parameter name="browser" value="firefox"/>
+        <classes>
+            <class name="test.java.TestCases.LoginTest"/>
+        </classes>
+    </test>
+    <!-- Add more <test> tags here for different groups of tests as your project grows -->
+</suite>
