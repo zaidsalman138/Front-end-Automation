@@ -15,16 +15,23 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
-
-
-
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 public class BaseClass {
-    protected static WebDriver driver;
+    protected WebDriver driver;
     protected static PropertyReader propertyReader;
     JavascriptExecutor js = (JavascriptExecutor) driver;
     ActionMap actionMap = new ActionMap();
+    private static final Logger logger = LoggerFactory.getLogger(BaseClass.class);
     @BeforeClass
     public void setup() {
         // Initialize the PropertyReader
@@ -56,14 +63,15 @@ public class BaseClass {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         // Navigate to the base URL from the configuration
-        driver.get(propertyReader.getProperty("baseUrl"));
+       // driver.get(propertyReader.getProperty("crmUrl"));
     }
 
+
     @AfterClass
-    public void tearDown() {
-        // Close the browser after test completion
+    public void cleanUp() {
         if (driver != null) {
-           // driver.quit();
+            driver.quit(); // Use quit() instead of close() to ensure all associated windows are closed
+            driver = null;
         }
     }
 
@@ -364,12 +372,44 @@ public class BaseClass {
     public String intToString(int num) {
         return Integer.toString(num);
     }
-    public void waitForPageLoad(WebDriver driver) {
-    WebDriverWait wait = new WebDriverWait(driver, 60); // Wait up to 30 seconds
-
-    // Wait for JavaScript document.readyState to be 'complete'
-    wait.until((ExpectedCondition<Boolean>) wd ->
-        ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete"));
+    public void waitForPageLoad() {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, 120);
+            
+            // Wait for document ready state
+            wait.until((ExpectedCondition<Boolean>) wd -> {
+                try {
+                    return ((JavascriptExecutor) wd)
+                        .executeScript("return document.readyState").equals("complete");
+                } catch (Exception e) {
+                    return false;
+                }
+            });
+            
+            // Wait for jQuery if present
+            wait.until((ExpectedCondition<Boolean>) wd -> {
+                try {
+                    return ((Long) ((JavascriptExecutor) wd)
+                        .executeScript("return jQuery.active") == 0);
+                } catch (Exception e) {
+                    return true;
+                }
+            });
+            
+            // Wait for Angular if present
+            wait.until((ExpectedCondition<Boolean>) wd -> {
+                try {
+                    return ((JavascriptExecutor) wd)
+                        .executeScript("return (window.angular !== undefined) ? 0 === angular.element(document).injector().get('$http').pendingRequests.length : true").equals(true);
+                } catch (Exception e) {
+                    return true;
+                }
+            });
+            
+            Thread.sleep(3000); // Increased wait time for rendering
+        } catch (Exception e) {
+            logger.error("Page load wait error: " + e.getMessage());
+        }
     }
     public void clickElementMultipleTimes(WebDriver driver, String locator, int times) {
     // Find the element using CSS selector
@@ -415,5 +455,41 @@ public class BaseClass {
         WebDriverWait wait = new WebDriverWait(driver, 10); // 10 seconds wait time
         WebElement frameElement = findElementByType(locatorType, locatorValue);
         wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frameElement));
+    }
+
+    protected void initializeDriver() {
+        try {
+            WebDriverManager.chromedriver().setup();
+        } catch (Exception e) {
+            // Fallback to local ChromeDriver if WebDriverManager fails
+            System.setProperty("webdriver.chrome.driver", propertyReader.getProperty("chromeDriverPath"));
+        }
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    }
+    
+    @AfterClass
+    public void tearDown() {
+        // Close the browser after test completion
+        if (driver != null) {
+            driver.quit(); // Quit the driver
+            driver = null; // Set driver to null to avoid using it after quitting
+        }
+    }
+
+    public String captureScreenshot(WebDriver driver, String screenshotName) {
+        try {
+            TakesScreenshot ts = (TakesScreenshot) driver;
+            File source = ts.getScreenshotAs(OutputType.FILE);
+            String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+            String destination = "screenshots/" + screenshotName + "_" + timestamp + ".png";
+            File finalDestination = new File(destination);
+            FileUtils.copyFile(source, finalDestination);
+            return destination;
+        } catch (Exception e) {
+            System.out.println("Exception while taking screenshot: " + e.getMessage());
+            return null;
+        }
     }
 }

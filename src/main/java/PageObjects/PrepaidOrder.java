@@ -18,8 +18,8 @@ public class PrepaidOrder extends BaseClass {
     }
 
     public  void prepaidOrder() {
-    CreateCustomer createCustomer = new CreateCustomer(driver);
-    String personalId = createCustomer.personalid;        
+  //  CreateCustomer createCustomer = new CreateCustomer(driver);
+   // String personalId = createCustomer.personalid;        
     WebDriverWait wait = new WebDriverWait(driver, 30);  
 
     waitAndClick(wait, By.xpath("//*[@id='appnavigator']"));

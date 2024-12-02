@@ -8,6 +8,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class LoginPage extends BaseClass {
@@ -28,7 +30,11 @@ public class LoginPage extends BaseClass {
     
     // Method to enter username
     public void enterUsername(String username) {
+
         WebElement usernameField = driver.findElement(usernameLocator);
+        WebDriverWait wait = new WebDriverWait(driver, 30); // Wait for up to 10 seconds
+        wait.until(ExpectedConditions.visibilityOfElementLocated(usernameLocator)); // Replace with
+        
         if (usernameField.isDisplayed()) {
             usernameField.sendKeys(username);
         }
@@ -56,7 +62,7 @@ public class LoginPage extends BaseClass {
     // Method to perform login
     public void loginAs(String username, String password) {
        // openBrowser();
-        waitForPageLoad(driver);
+        waitForPageLoad();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         enterUsername(username);
         scrollDown(0,1000);

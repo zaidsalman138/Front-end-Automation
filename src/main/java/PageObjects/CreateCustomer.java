@@ -117,7 +117,7 @@ public class CreateCustomer extends BaseClass {
         String brmurl = propertyReader.getProperty("brmUrl");
         driver.get(brmurl);
         mouseOverAndClickChild("xpath", "//*[@id='account-a']/span[text()='Account']", "xpath", "//*[text()='Search Customer Account']");
-        waitForPageLoad(driver);
+        waitForPageLoad();
         switchToFrame("id", "zk_comp_87");
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         waitAndClick(wait, By.id("txtentireaccnumber"));
