@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class ActionMap {
-    public WebDriver driver;
+//    public WebDriver driver;
     private HashMap<String, Runnable> actionMap;
 
     public ActionMap() {
@@ -22,16 +22,16 @@ public class ActionMap {
         // Add more actions as needed
     }
 
-    public void performAction(String action) {
-        Runnable runnable = actionMap.get(action.toLowerCase());
-        if (runnable != null) {
-            runnable.run();
+    public void performAction(WebDriver driver ,String action, String text) {
+        //Runnable runnable = actionMap.get(action.toLowerCase());
+        if (text != null) {
+            //runnable.run();
             switch (action) {
                 case "click":
                     System.out.println("Performing click action");
-                    WebElement loginButton = driver.findElement(By.xpath("//*[text()='Login']"));
-                    if (loginButton.isDisplayed() && loginButton.isEnabled()) {
-                     loginButton.click();
+                    WebElement button = driver.findElement(By.xpath("//button[text()="+text+"]"));
+                    if (button.isDisplayed() && button.isEnabled()) {
+                     button.click();
                     }
                     break;
                 case "enter text":
@@ -49,14 +49,14 @@ public class ActionMap {
     private void openBrowser() {
         System.out.println("Opening the browser...");
         System.setProperty("webdriver.chrome.driver", new PropertyReader().getProperty("chromeDriverPath"));
-        driver = new ChromeDriver();
+        //driver = new ChromeDriver();
     }
 
     private void clickOnButton() {
         System.out.println("Clicking on the button...");
     // Assuming you have a button element with id "buttonId"
-    WebElement button = driver.findElement(By.id("button"));
-    button.click();
+    //WebElement button = driver.findElement(By.id("button"));
+    //button.click();
     }
 
     // Add more action methods as needed

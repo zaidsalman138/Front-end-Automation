@@ -22,6 +22,8 @@ import org.openqa.selenium.TakesScreenshot;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -283,21 +285,21 @@ public class BaseClass {
         WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
         wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
-    public void clickButton(){
-        actionMap.performAction("click on button");
+    public void clickButton(WebDriver driver, String buttontext){
+        actionMap.performAction(driver, "click" ,buttontext );
 
     }
     public void openBrowser(){
-        actionMap.performAction("open browser");
+        actionMap.performAction(driver ,"open browser","");
 
     }
     public void selectFromDropdown(WebElement dropdownElement, String value) {
-        Select dropdown = new Select(dropdownElement);
+        Select dropdown = new Select(dropdownElement);   //*[@id="select2-drop"]
         dropdown.selectByVisibleText(value);
     }
     public void selectFromCustomDropdown(WebElement dropdownElement, String value) {
         dropdownElement.click();
-        WebElement option = dropdownElement.findElement(By.xpath("//div[contains(text(), '" + value + "')]"));
+        WebElement option = dropdownElement.findElement(By.xpath("//option[contains(text(), '"+value+"')]"));
         option.click();
     }
     public void switchToNewWindow(WebDriver driver) {
@@ -374,10 +376,10 @@ public class BaseClass {
     }
     public void waitForPageLoad() {
         try {
-            WebDriverWait wait = new WebDriverWait(driver, 120);
+            WebDriverWait wait = new WebDriverWait(driver, 30); // Set initial wait time to 30 seconds
             
             // Wait for document ready state
-            wait.until((ExpectedCondition<Boolean>) wd -> {
+            boolean pageLoaded = wait.until((ExpectedCondition<Boolean>) wd -> {
                 try {
                     return ((JavascriptExecutor) wd)
                         .executeScript("return document.readyState").equals("complete");
@@ -385,7 +387,23 @@ public class BaseClass {
                     return false;
                 }
             });
-            
+
+            // If the page is not loaded within 30 seconds, refresh the page
+            if (!pageLoaded) {
+                logger.warn("Page did not load within 30 seconds, refreshing...");
+                driver.navigate().refresh();
+                
+                // Wait again for the page to load after refresh
+                wait.until((ExpectedCondition<Boolean>) wd -> {
+                    try {
+                        return ((JavascriptExecutor) wd)
+                            .executeScript("return document.readyState").equals("complete");
+                    } catch (Exception e) {
+                        return false;
+                    }
+                });
+            }
+
             // Wait for jQuery if present
             wait.until((ExpectedCondition<Boolean>) wd -> {
                 try {
@@ -395,7 +413,7 @@ public class BaseClass {
                     return true;
                 }
             });
-            
+
             // Wait for Angular if present
             wait.until((ExpectedCondition<Boolean>) wd -> {
                 try {
@@ -405,8 +423,8 @@ public class BaseClass {
                     return true;
                 }
             });
-            
-            Thread.sleep(3000); // Increased wait time for rendering
+
+            Thread.sleep(3000); // Additional wait time for rendering
         } catch (Exception e) {
             logger.error("Page load wait error: " + e.getMessage());
         }
@@ -446,7 +464,8 @@ public class BaseClass {
     
        // Wait for the child element to be visible (you might need to add explicit wait here)
        WebElement childElement = findElementByType(childLocatorType, childLocatorValue);
-    
+       driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+       
        // Click the child element
        actions.moveToElement(childElement).click().build().perform();
     }
@@ -490,6 +509,136 @@ public class BaseClass {
         } catch (Exception e) {
             System.out.println("Exception while taking screenshot: " + e.getMessage());
             return null;
+        }
+    }
+
+    public WebElement findElementByHrefTextAndClick(String hrefText) {
+        try {
+            // Find element where href attribute contains the specified text
+            String xpathExpression = "//a[contains(@href, '" + hrefText + "')]";
+            WebDriverWait wait = new WebDriverWait(driver, 10);
+            WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpathExpression)));
+            element.click();
+            logger.debug("Found element with href containing: '{}'", hrefText);
+            return element;
+        } catch (Exception e) {
+            logger.error("Failed to find element with href containing '{}': {}", hrefText, e.getMessage());
+            throw new RuntimeException("Element with href text '" + hrefText + "' not found", e);
+        }
+    }
+
+    // Overloaded method to find exact href match
+    public WebElement findElementByExactHref(String exactHref) {
+        try {
+            String xpathExpression = "//a[@href='" + exactHref + "']";
+            WebDriverWait wait = new WebDriverWait(driver, 10);
+            WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpathExpression)));
+            
+            logger.debug("Found element with exact href: '{}'", exactHref);
+            return element;
+        } catch (Exception e) {
+            logger.error("Failed to find element with exact href '{}': {}", exactHref, e.getMessage());
+            throw new RuntimeException("Element with exact href '" + exactHref + "' not found", e);
+        }
+    }
+
+    public void clickButtonByText(String buttonText) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, 10);
+            String xpathExpression = "//button[text()='"+ buttonText +"']";
+            WebElement button = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpathExpression)));
+            
+            button.click();
+            logger.debug("Clicked on button with text: '{}'", buttonText);
+        } catch (Exception e) {
+            logger.error("Failed to click on button with text '{}': {}", buttonText, e.getMessage());
+            throw new RuntimeException("Failed to click on button with text '" + buttonText + "'", e);
+        }
+    }
+
+    public void selectInputByText(String inputLocator, String textToSelect) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, 10);
+            List<WebElement> inputs = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(inputLocator)));
+
+            for (WebElement input : inputs) {
+                if (input.getAttribute("value").equals(textToSelect)) {
+                    input.click();
+                    logger.debug("Selected input with text: '{}'", textToSelect);
+                    return;
+                }
+            }
+            logger.warn("No input found with text: '{}'", textToSelect);
+        } catch (Exception e) {
+            logger.error("Failed to select input with text '{}': {}", textToSelect, e.getMessage());
+            throw new RuntimeException("Failed to select input with text '" + textToSelect + "'", e);
+        }
+    }
+
+    public void selectTextFromNestedList(String listLocator, String textToSelect) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, 10);
+            WebElement listElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(listLocator)));
+            
+            // Find all ul elements within the list element
+            List<WebElement> ulElements = listElement.findElements(By.tagName("li"));
+            
+            for (WebElement ulElement : ulElements) {
+                // Find all li elements within each ul
+                //List<WebElement> listItems = ulElement.findElements(By.tagName("div"));
+                
+                //for (WebElement listItem : listItems) {
+                    // Find the span within each list item
+                    WebElement span = ulElement.findElement(By.tagName("div"));
+                    System.out.println("list itemes" + span.getText());
+                    if (span.getText().equals(textToSelect)) {
+                        span.click();
+                        logger.debug("Selected text: '{}'", textToSelect);
+                        return;
+                    }
+                //}
+            }
+            logger.warn("No span found with text: '{}'", textToSelect);
+        } catch (Exception e) {
+            logger.error("Failed to select text '{}': {}", textToSelect, e.getMessage());
+            throw new RuntimeException("Failed to select text '" + textToSelect + "'", e);
+        }
+    }
+
+    public void clickTextFromNestedList(String listLocator, String textToClcik) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, 10);
+            WebElement listElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(listLocator)));
+            
+            // Find all ul elements within the list element
+            List<WebElement> ulElements = listElement.findElements(By.tagName("span"));
+            
+            for (WebElement ulElement : ulElements) {
+                  
+                    System.out.println("list itemes : " + ulElement.getText());
+                    if (ulElement.getText().equals(textToClcik)) {
+                        ulElement.click();
+                        logger.debug("Clicked text: '{}'", textToClcik);
+                        return;
+                    }
+                
+            }
+            logger.warn("No span found with text: '{}'", textToClcik );
+        } catch (Exception e) {
+            logger.error("Failed to clicked text '{}': {}", textToClcik, e.getMessage());
+            throw new RuntimeException("Failed to clicked text '" + textToClcik + "'", e);
+        }
+    }
+
+    public void clickOnBlankPage(int x, int y) {
+        try {
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            String script = "document.elementFromPoint(arguments[0], arguments[1]).click();";
+            js.executeScript(script, x, y);
+            logger.debug("Clicked on blank page at coordinates: ({}, {})", x, y);
+        } catch (Exception e) {
+            logger.error("Failed to click on blank page: {}", e.getMessage());
+            throw new RuntimeException("Failed to click on blank page at coordinates (" + x + ", " + y + ")", e);
         }
     }
 }
