@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2024-12-25T22:10:37 PKT" name="Selenium Java Hybrid Framework Suite" finished-at="2024-12-25T22:13:39 PKT" duration-ms="182076">
+    <groups>
+    </groups>
+    <test started-at="2024-12-25T22:10:37 PKT" name="Login Functionality Tests" finished-at="2024-12-25T22:13:39 PKT" duration-ms="182076">
+      <class name="TestCases.CrmTest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:TestCases.CrmTest@5d908d47]" started-at="2024-12-25T22:10:37 PKT" name="setup" finished-at="2024-12-25T22:10:43 PKT" duration-ms="6049" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="loginCRM()[pri:0, instance:TestCases.CrmTest@5d908d47]" started-at="2024-12-25T22:10:43 PKT" name="loginCRM" finished-at="2024-12-25T22:12:32 PKT" duration-ms="109662" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginCRM -->
+        <test-method signature="testPaymentModuleNavigation()[pri:2, instance:TestCases.CrmTest@5d908d47]" started-at="2024-12-25T22:12:32 PKT" name="testPaymentModuleNavigation" description="Wait, hover, and click Payment module" finished-at="2024-12-25T22:13:20 PKT" duration-ms="47189" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testPaymentModuleNavigation -->
+        <test-method signature="testProductsPageNavigation()[pri:3, instance:TestCases.CrmTest@5d908d47]" started-at="2024-12-25T22:13:20 PKT" name="testProductsPageNavigation" description="Navigate to Products page and validate elements" finished-at="2024-12-25T22:13:38 PKT" duration-ms="18688" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testProductsPageNavigation -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:TestCases.CrmTest@5d908d47]" started-at="2024-12-25T22:13:38 PKT" name="tearDown" finished-at="2024-12-25T22:13:39 PKT" duration-ms="405" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="cleanUp()[pri:0, instance:TestCases.CrmTest@5d908d47]" started-at="2024-12-25T22:13:39 PKT" name="cleanUp" finished-at="2024-12-25T22:13:39 PKT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- cleanUp -->
+      </class> <!-- TestCases.CrmTest -->
+    </test> <!-- Login Functionality Tests -->
+  </suite> <!-- Selenium Java Hybrid Framework Suite -->
+</testng-results>
