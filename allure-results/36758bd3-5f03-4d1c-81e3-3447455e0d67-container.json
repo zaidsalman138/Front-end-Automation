@@ -1,1 +1,0 @@
-{"uuid":"36758bd3-5f03-4d1c-81e3-3447455e0d67","name":"TestCases.CrmLogin","children":["24424d61-87c3-435e-8968-5a78c17db57a"],"befores":[{"name":"setup","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1735021110342,"stop":1735021112357}],"afters":[],"start":1735021110289,"stop":1735021125955}
