@@ -59,15 +59,22 @@ public class BaseClass {
             throw new IllegalArgumentException("Unsupported browser type: " + browserType);
         }
 
-        // Maximize the browser window
-        driver.manage().window().maximize();
-        // Set implicit wait time
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
-        // Navigate to the base URL from the configuration
-       // driver.get(propertyReader.getProperty("crmUrl"));
     }
 
+       /**
+     * Scrolls the page horizontally by the specified number of pixels.
+     * @param pixels Number of pixels to scroll. Positive for right, negative for left.
+     */
+    
+    public void scrollHorizontally(WebElement targetElement) {
+        try {
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].scrollIntoView(true);", targetElement);
+            logger.info("Scrolled horizontally by {} pixels");
+        } catch (Exception e) {
+            logger.error("Failed to scroll horizontally: ", e);
+        }
+    }    
 
     @AfterClass
     public void cleanUp() {
@@ -376,6 +383,7 @@ public class BaseClass {
     }
     public void waitForPageLoad() {
         try {
+            @SuppressWarnings("deprecation")
             WebDriverWait wait = new WebDriverWait(driver, 30); // Set initial wait time to 30 seconds
             
             // Wait for document ready state
@@ -549,6 +557,7 @@ public class BaseClass {
             WebElement button = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpathExpression)));
             
             button.click();
+            waitForPageLoad();
             logger.debug("Clicked on button with text: '{}'", buttonText);
         } catch (Exception e) {
             logger.error("Failed to click on button with text '{}': {}", buttonText, e.getMessage());
@@ -630,6 +639,55 @@ public class BaseClass {
         }
     }
 
+    public void clickTextFromNestedList(String locatorType, String listLocator, String textToClcik) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, 10);
+            By locator = getByLocator(locatorType, listLocator);
+            WebElement listElement = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+            
+            // Find all ul elements within the list element
+            List<WebElement> ulElements = listElement.findElements(By.tagName("a"));
+            
+            for (WebElement ulElement : ulElements) {
+                System.out.println("list itemes : " + ulElement.getText());
+                if (ulElement.getText().equals(textToClcik)) {
+                    ulElement.click();
+                    logger.debug("Clicked text: '{}'", textToClcik);
+                    return;
+                }
+            }
+            logger.warn("No span found with text: '{}'", textToClcik);
+        } catch (Exception e) {
+            logger.error("Failed to clicked text '{}': {}", textToClcik, e.getMessage());
+            throw new RuntimeException("Failed to clicked text '" + textToClcik + "'", e);
+        }
+    }
+
+    private By getByLocator(String locatorType, String locatorValue) {
+        switch (locatorType.toLowerCase()) {
+            case "id":
+                return By.id(locatorValue);
+            case "name":
+                return By.name(locatorValue);
+            case "xpath":
+                return By.xpath(locatorValue);
+            case "css":
+            case "cssselector":
+                return By.cssSelector(locatorValue);
+            case "class":
+            case "classname":
+                return By.className(locatorValue);
+            case "linktext":
+                return By.linkText(locatorValue);
+            case "partiallinktext":
+                return By.partialLinkText(locatorValue);
+            case "tagname":
+                return By.tagName(locatorValue);
+            default:
+                throw new IllegalArgumentException("Invalid locator type: " + locatorType);
+        }
+    }
+
     public void clickOnBlankPage(int x, int y) {
         try {
             JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -639,6 +697,51 @@ public class BaseClass {
         } catch (Exception e) {
             logger.error("Failed to click on blank page: {}", e.getMessage());
             throw new RuntimeException("Failed to click on blank page at coordinates (" + x + ", " + y + ")", e);
+        }
+    }
+
+    public void clickOnElementByXPath(String xpath) {
+        try {
+            WebElement element = driver.findElement(By.xpath(xpath));
+            element.click();
+            logger.debug("Clicked on element with XPath: '{}'", xpath);
+        } catch (Exception e) {
+            logger.error("Failed to click on element with XPath '{}': {}", xpath, e.getMessage());
+            throw new RuntimeException("Failed to click on element with XPath '" + xpath + "'", e);
+        }
+    }
+
+    public void clickElementByText(String tagName, String text) {
+        try {
+            String xpath = String.format("//%s[text()='%s']", tagName, text);
+            WebElement element = driver.findElement(By.xpath(xpath));
+            element.click();
+            logger.debug("Clicked on element with text: '{}'", text);
+        } catch (Exception e) {
+            logger.error("Failed to click on element with text '{}': {}", text, e.getMessage());
+            throw new RuntimeException("Failed to click on element with text '" + text + "'", e);
+        }
+    }
+
+    public void navigateBack() {
+        try {
+            driver.navigate().back();
+            logger.debug("Navigated back to the previous page.");
+            waitForPageLoad();
+        } catch (Exception e) {
+            logger.error("Failed to navigate back: {}", e.getMessage());
+            throw new RuntimeException("Failed to navigate back to the previous page", e);
+        }
+    }
+
+    public void clickLinkByText(String linkText) {
+        try {
+            WebElement link = driver.findElement(By.linkText(linkText));
+            link.click();
+            logger.debug("Clicked on link with text: '{}'", linkText);
+        } catch (Exception e) {
+            logger.error("Failed to click on link with text '{}': {}", linkText, e.getMessage());
+            throw new RuntimeException("Failed to click on link with text '" + linkText + "'", e);
         }
     }
 }

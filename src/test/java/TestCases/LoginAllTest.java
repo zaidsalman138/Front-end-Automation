@@ -1,5 +1,6 @@
 package TestCases;
 
+import org.testng.Assert;
 import org.testng.annotations.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,7 +12,7 @@ import PageObjects.LoginPage;
 import PageObjects.CustomerView;
 import Utilities.PropertyReader;
 import Utilities.BaseClass;
-import org.testng.Assert;
+//import org.testng.Assert;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -111,7 +112,7 @@ public class LoginAllTest extends BaseClass {
             throw e;
         }
     }
-    @Test(priority = 1, enabled = true)
+    @Test(priority = 2, enabled = false)
     @Description("Verify Customer 360 View")
     public void testSitCustomer360View() throws InterruptedException {
         String username = propertyReader.getProperty("username");
@@ -119,9 +120,19 @@ public class LoginAllTest extends BaseClass {
         driver.get(propertyReader.getProperty("crmUrl"));
         loginAs(username, password);
         customerView.customer360view();
-        //String siaTitle = driver.getTitle();
-        //Assert.assertEquals(siaTitle, "Service Instance Account", "SIA Title does not matched");
-
+        String siaTitle = driver.getTitle();
+        Assert.assertEquals(siaTitle, "Service Instance Account", "SIA Title does not matched");
+    
+    }
+    @Test(priority = 3, enabled = true)
+    @Description("Verify Customer Account")
+    public void testCustomerAccount() throws InterruptedException{
+        String username = propertyReader.getProperty("username");
+        String password = propertyReader.getProperty("password");
+        driver.get(propertyReader.getProperty("crmUrl"));
+        loginAs(username, password);
+        customerView.customerAccount();
+        captureScreenshot(driver, "customerAccount_end_of_test");
     }
     @AfterMethod
     public void tearDown() {

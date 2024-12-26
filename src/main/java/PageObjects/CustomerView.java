@@ -20,6 +20,7 @@ public class CustomerView extends BaseClass {
         }
         public  void customer360view() throws InterruptedException{
 
+            @SuppressWarnings("deprecation")
             WebDriverWait wait = new WebDriverWait(driver, 30);
             driver.get(propertyReader.getProperty("crmSiaUrl"));
             // Navigate to the Customer section
@@ -126,5 +127,68 @@ public class CustomerView extends BaseClass {
             captureScreenshot(driver, "end_execution");
         }
 
+    public void customerAccount() throws InterruptedException{
+        driver.get(propertyReader.getProperty("crmCaUrl"));
+        waitForPageLoad();
+        //clickOnBlankPage(100, 100);
+        WebElement caStatus = driver.findElement(By.xpath("//*[@id=\"s2id_autogen5\"]/ul"));
+        scrollHorizontally(caStatus);
+        caStatus.click();
+        selectTextFromNestedList("//*[@id=\"select2-drop\"]/ul", "Active");
+        clickOnBlankPage(100, 100);
+        clickButtonByText("Search");
+        waitForPageLoad();
+        WebElement caNo = driver.findElement(By.xpath("//*[@id='Accounts_listView_row_1']//*[@data-name='account_no']/span/span/a"));
+        caNo.click();
+        logger.info("Clicked on Customer Account");
+        String caTitle = driver.getTitle();
+        captureScreenshot(driver, caTitle);
+        waitForPageLoad();
+        clickElementByText("strong", "Order");
+        logger.info("Clicked on Order Tab");
+        clickElementByText("span", "Order");
+        waitForPageLoad();
+        navigateBack();
+        clickLinkByText("Opportunities");
+        waitForPageLoad();
+        clickButtonByText("Search");
+        String oppTitle = driver.getTitle();
+        String oppNo = driver.findElement(By.xpath("//*[@id='Potentials_listView_row_1']/td[3]/span/span")).getText();
+        System.out.println("Opportunity No: "+oppNo);
+        captureScreenshot(driver, oppTitle);
+        clickOnBlankPage(0, 0);
+        navigateBack();
+        clickElementByText("strong", "Order");
+        clickLinkByText("Service Contracts");
+    
+        waitForPageLoad();
+        clickButtonByText("Search");
+        clickOnBlankPage(0, 0);
+        navigateBack();
+        clickElementByText("strong", "Order");
+        clickLinkByText("CUG VPN Details");
+        captureScreenshot(driver, driver.getTitle());
+        navigateBack();
+        clickElementByText("strong", "Bill Details");
+        logger.info("Clicked on Bill Details Tab");
+        waitForPageLoad();
+        clickElementByText("span", "Bill Detail");
+        captureScreenshot(driver, "bill_details");
+        navigateBack();
+        clickElementByText("strong", "Accounts");
+        logger.info("Clicked on Accounts Tab");
+        waitForPageLoad();
+        clickElementByText("strong", "Transaction Details");
+        logger.info("Clicked on Transaction Details Tab");
+        waitForPageLoad();      
 
+
+
+        
+       
+
+
+
+
+    }
 }
