@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="1" parallel="tests" name="Failed suite [Selenium Java Hybrid Framework Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="1" parallel="tests" name="Login Functionality Tests(failed)">
+    <classes>
+      <class name="TestCases.CrmTest">
+        <methods>
+          <include name="tearDown"/>
+          <include name="testPaymentModuleNavigation"/>
+          <include name="cleanUp"/>
+          <include name="setup"/>
+        </methods>
+      </class> <!-- TestCases.CrmTest -->
+    </classes>
+  </test> <!-- Login Functionality Tests(failed) -->
+</suite> <!-- Failed suite [Selenium Java Hybrid Framework Suite] -->
