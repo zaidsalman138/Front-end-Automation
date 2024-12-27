@@ -7,6 +7,7 @@ import PageObjects.LandingPage;
 import PageObjects.LoginPage;
 import PageObjects.Orders;
 import PageObjects.Products;
+import PageObjects.Tickets;
 import Utilities.BaseClass;
 import Utilities.PropertyReader;
 
@@ -158,6 +159,22 @@ public class CrmTest extends BaseClass {
 	        inventoryPage.verifyTableDataIsPopulated();
 	        
 	    }
+	 
+	 @Test(priority = 6, description = "Navigate to Tickets and Perform Validations")
+	 public void verifyTicketsNavigation() throws Exception {
+	     // Initialize the Tickets page object
+	     Tickets ticketsPage = new Tickets(driver);
+
+	     // Perform actions and verifications
+	     ticketsPage.clickNavigation();
+	     ticketsPage.hoverOverSupportMenu();
+	     ticketsPage.clickTicketsModule();
+	     ticketsPage.verifyPageTitle();
+	     ticketsPage.verifyAddRecordButton();
+	     ticketsPage.verifySettingsButton();
+	     ticketsPage.verifySearchButton();
+	     ticketsPage.verifyTableDataIsPopulated();
+	 }
 	 
 	 
 	    @AfterClass

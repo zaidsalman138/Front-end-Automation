@@ -12,6 +12,7 @@
           <include name="cleanUp"/>
           <include name="setup"/>
           <include name="verifyOrdersNavigation"/>
+          <include name="loginCRM"/>
           <include name="testProductsPageNavigation"/>
         </methods>
       </class> <!-- TestCases.CrmTest -->

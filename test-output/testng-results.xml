@@ -1,41 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="5" passed="5" failed="0" skipped="0">
+<testng-results ignored="0" total="6" passed="6" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-12-27T17:52:17 PKT" name="TAL One Sanity Suite" finished-at="2024-12-27T17:54:51 PKT" duration-ms="153913">
+  <suite started-at="2024-12-27T19:35:14 PKT" name="TAL One Sanity Suite" finished-at="2024-12-27T19:38:30 PKT" duration-ms="195997">
     <groups>
     </groups>
-    <test started-at="2024-12-27T17:52:17 PKT" name="Login Functionality Tests" finished-at="2024-12-27T17:54:51 PKT" duration-ms="153913">
+    <test started-at="2024-12-27T19:35:14 PKT" name="Login Functionality Tests" finished-at="2024-12-27T19:38:30 PKT" duration-ms="195997">
       <class name="TestCases.CrmTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:TestCases.CrmTest@6f36c2f0]" started-at="2024-12-27T17:52:17 PKT" name="setup" finished-at="2024-12-27T17:52:27 PKT" duration-ms="9611" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:TestCases.CrmTest@f58853c]" started-at="2024-12-27T19:35:14 PKT" name="setup" finished-at="2024-12-27T19:35:20 PKT" duration-ms="5989" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="loginCRM()[pri:0, instance:TestCases.CrmTest@6f36c2f0]" started-at="2024-12-27T17:52:27 PKT" name="loginCRM" finished-at="2024-12-27T17:53:20 PKT" duration-ms="53460" status="PASS">
+        <test-method signature="loginCRM()[pri:0, instance:TestCases.CrmTest@f58853c]" started-at="2024-12-27T19:35:20 PKT" name="loginCRM" finished-at="2024-12-27T19:36:21 PKT" duration-ms="60816" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loginCRM -->
-        <test-method signature="testPaymentModuleNavigation()[pri:2, instance:TestCases.CrmTest@6f36c2f0]" started-at="2024-12-27T17:53:21 PKT" name="testPaymentModuleNavigation" description="Wait, hover, and click Payment module" finished-at="2024-12-27T17:53:51 PKT" duration-ms="30592" status="PASS">
+        <test-method signature="testPaymentModuleNavigation()[pri:2, instance:TestCases.CrmTest@f58853c]" started-at="2024-12-27T19:36:21 PKT" name="testPaymentModuleNavigation" description="Wait, hover, and click Payment module" finished-at="2024-12-27T19:36:49 PKT" duration-ms="28064" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testPaymentModuleNavigation -->
-        <test-method signature="testProductsPageNavigation()[pri:3, instance:TestCases.CrmTest@6f36c2f0]" started-at="2024-12-27T17:53:51 PKT" name="testProductsPageNavigation" description="Navigate to Products page and validate elements" finished-at="2024-12-27T17:54:05 PKT" duration-ms="13875" status="PASS">
+        <test-method signature="testProductsPageNavigation()[pri:3, instance:TestCases.CrmTest@f58853c]" started-at="2024-12-27T19:36:49 PKT" name="testProductsPageNavigation" description="Navigate to Products page and validate elements" finished-at="2024-12-27T19:37:04 PKT" duration-ms="15121" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testProductsPageNavigation -->
-        <test-method signature="verifyOrdersNavigation()[pri:4, instance:TestCases.CrmTest@6f36c2f0]" started-at="2024-12-27T17:54:05 PKT" name="verifyOrdersNavigation" description="Navigate to Orders and Perform Validations" finished-at="2024-12-27T17:54:40 PKT" duration-ms="35181" status="PASS">
+        <test-method signature="verifyOrdersNavigation()[pri:4, instance:TestCases.CrmTest@f58853c]" started-at="2024-12-27T19:37:04 PKT" name="verifyOrdersNavigation" description="Navigate to Orders and Perform Validations" finished-at="2024-12-27T19:37:52 PKT" duration-ms="48136" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyOrdersNavigation -->
-        <test-method signature="verifyInventory()[pri:5, instance:TestCases.CrmTest@6f36c2f0]" started-at="2024-12-27T17:54:40 PKT" name="verifyInventory" description="Navigate to Inventory and Perform Validations" finished-at="2024-12-27T17:54:50 PKT" duration-ms="9390" status="PASS">
+        <test-method signature="verifyInventory()[pri:5, instance:TestCases.CrmTest@f58853c]" started-at="2024-12-27T19:37:52 PKT" name="verifyInventory" description="Navigate to Inventory and Perform Validations" finished-at="2024-12-27T19:38:08 PKT" duration-ms="16062" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyInventory -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:TestCases.CrmTest@6f36c2f0]" started-at="2024-12-27T17:54:50 PKT" name="tearDown" finished-at="2024-12-27T17:54:51 PKT" duration-ms="1568" status="PASS">
+        <test-method signature="verifyTicketsNavigation()[pri:6, instance:TestCases.CrmTest@f58853c]" started-at="2024-12-27T19:38:08 PKT" name="verifyTicketsNavigation" description="Navigate to Tickets and Perform Validations" finished-at="2024-12-27T19:38:29 PKT" duration-ms="21221" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyTicketsNavigation -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:TestCases.CrmTest@f58853c]" started-at="2024-12-27T19:38:29 PKT" name="tearDown" finished-at="2024-12-27T19:38:30 PKT" duration-ms="436" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="cleanUp()[pri:0, instance:TestCases.CrmTest@6f36c2f0]" started-at="2024-12-27T17:54:51 PKT" name="cleanUp" finished-at="2024-12-27T17:54:51 PKT" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="cleanUp()[pri:0, instance:TestCases.CrmTest@f58853c]" started-at="2024-12-27T19:38:30 PKT" name="cleanUp" finished-at="2024-12-27T19:38:30 PKT" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- cleanUp -->
