@@ -84,9 +84,9 @@ public class Inventory {
     	wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.xpath("//tbody[@class='overflow-y']/tr"), 1));
         //wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(tableRows, 1));
         // Assert that the number of rows is greater than 1
-        Assert.assertTrue(tableRows.size() > 1, "Table data is not populated as expected. Number of rows: " + tableRows.size());
-    
+        Assert.assertTrue(tableRows.size() > 1, "Table data is not populated as expected. Number of rows: " + tableRows.size());  
         logger.info("Table data is populated successfully with " + tableRows.size() + " rows.");
+        System.out.println("Data is populating correctly");
     }
 
 
