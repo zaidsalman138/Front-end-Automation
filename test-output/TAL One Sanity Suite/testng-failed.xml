@@ -6,14 +6,10 @@
     <classes>
       <class name="TestCases.CrmTest">
         <methods>
-          <include name="verifyInventory"/>
           <include name="tearDown"/>
           <include name="testPaymentModuleNavigation"/>
           <include name="cleanUp"/>
           <include name="setup"/>
-          <include name="verifyOrdersNavigation"/>
-          <include name="loginCRM"/>
-          <include name="testProductsPageNavigation"/>
         </methods>
       </class> <!-- TestCases.CrmTest -->
     </classes>

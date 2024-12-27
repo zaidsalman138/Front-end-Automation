@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Login Functionality Tests</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>6/0/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>5/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Fri Dec 27 19:35:14 PKT 2024</td>
+<td>Started on:</td><td>Fri Dec 27 20:21:13 PKT 2024</td>
 </tr>
-<tr><td>Total time:</td><td>195 seconds (195997 ms)</td>
+<tr><td>Total time:</td><td>323 seconds (323824 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,6 +67,66 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='TestCases.CrmTest.testPaymentModuleNavigation()'><b>testPaymentModuleNavigation</b><br>Test class: TestCases.CrmTest<br>Test method: Wait, hover, and click Payment module</td>
+<td><div><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //div[@id=&apos;PAYMENT_modules_dropdownMenu&apos;]//div[@class=&apos;menu-items-wrapper app-menu-items-wrapper&apos;] (tried for 100 second(s) with 500 MILLISECONDS interval)
+Build info: version: &apos;3.8.0&apos;, revision: &apos;924c4067df&apos;, time: &apos;2017-11-30T11:20:39.408Z&apos;
+System info: host: &apos;DESKTOP-J707CE4&apos;, ip: &apos;192.168.42.112&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;23.0.1&apos;
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 133.0.3, javascriptEnabled: true, moz:accessibilityChecks: false, moz:buildID: 20241209150345, moz:geckodriverVersion: 0.35.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 5680, moz:profile: C:\Users\HP\AppData\Local\T..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10....}
+Session ID: 2288184b-8ce8-45b8-89ee-e4005bddaebe
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:82)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:231)
+	at PageObjects.LandingPage.hoverOverPaymentModuleDropdown(LandingPage.java:40)
+	at TestCases.CrmTest.testPaymentModuleNavigation(CrmTest.java:85)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1575)
+... Removed 16 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1240652110", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1240652110'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //div[@id=&apos;PAYMENT_modules_dropdownMenu&apos;]//div[@class=&apos;menu-items-wrapper app-menu-items-wrapper&apos;] (tried for 100 second(s) with 500 MILLISECONDS interval)
+Build info: version: &apos;3.8.0&apos;, revision: &apos;924c4067df&apos;, time: &apos;2017-11-30T11:20:39.408Z&apos;
+System info: host: &apos;DESKTOP-J707CE4&apos;, ip: &apos;192.168.42.112&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;23.0.1&apos;
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 133.0.3, javascriptEnabled: true, moz:accessibilityChecks: false, moz:buildID: 20241209150345, moz:geckodriverVersion: 0.35.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 5680, moz:profile: C:\Users\HP\AppData\Local\T..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10....}
+Session ID: 2288184b-8ce8-45b8-89ee-e4005bddaebe
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:82)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:231)
+	at PageObjects.LandingPage.hoverOverPaymentModuleDropdown(LandingPage.java:40)
+	at TestCases.CrmTest.testPaymentModuleNavigation(CrmTest.java:85)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:28)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:418)
+	at org.testng.internal.thread.ThreadUtil.lambda$execute$0(ThreadUtil.java:64)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1575)
+</pre></div></td>
+<td>143</td>
+<td>TestCases.CrmTest@f58853c</td></tr>
+</table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
@@ -75,34 +135,29 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='TestCases.CrmTest.loginCRM()'><b>loginCRM</b><br>Test class: TestCases.CrmTest</td>
-<td></td>
-<td>60</td>
-<td>TestCases.CrmTest@f58853c</td></tr>
-<tr>
-<td title='TestCases.CrmTest.testPaymentModuleNavigation()'><b>testPaymentModuleNavigation</b><br>Test class: TestCases.CrmTest<br>Test method: Wait, hover, and click Payment module</td>
-<td></td>
-<td>28</td>
-<td>TestCases.CrmTest@f58853c</td></tr>
-<tr>
 <td title='TestCases.CrmTest.verifyInventory()'><b>verifyInventory</b><br>Test class: TestCases.CrmTest<br>Test method: Navigate to Inventory and Perform Validations</td>
 <td></td>
-<td>16</td>
+<td>10</td>
 <td>TestCases.CrmTest@f58853c</td></tr>
 <tr>
-<td title='TestCases.CrmTest.verifyTicketsNavigation()'><b>verifyTicketsNavigation</b><br>Test class: TestCases.CrmTest<br>Test method: Navigate to Tickets and Perform Validations</td>
+<td title='TestCases.CrmTest.loginCRM()'><b>loginCRM</b><br>Test class: TestCases.CrmTest</td>
 <td></td>
-<td>21</td>
-<td>TestCases.CrmTest@f58853c</td></tr>
-<tr>
-<td title='TestCases.CrmTest.testProductsPageNavigation()'><b>testProductsPageNavigation</b><br>Test class: TestCases.CrmTest<br>Test method: Navigate to Products page and validate elements</td>
-<td></td>
-<td>15</td>
+<td>67</td>
 <td>TestCases.CrmTest@f58853c</td></tr>
 <tr>
 <td title='TestCases.CrmTest.verifyOrdersNavigation()'><b>verifyOrdersNavigation</b><br>Test class: TestCases.CrmTest<br>Test method: Navigate to Orders and Perform Validations</td>
 <td></td>
-<td>48</td>
+<td>40</td>
+<td>TestCases.CrmTest@f58853c</td></tr>
+<tr>
+<td title='TestCases.CrmTest.verifyTicketsNavigation()'><b>verifyTicketsNavigation</b><br>Test class: TestCases.CrmTest<br>Test method: Navigate to Tickets and Perform Validations</td>
+<td></td>
+<td>25</td>
+<td>TestCases.CrmTest@f58853c</td></tr>
+<tr>
+<td title='TestCases.CrmTest.testProductsPageNavigation()'><b>testProductsPageNavigation</b><br>Test class: TestCases.CrmTest<br>Test method: Navigate to Products page and validate elements</td>
+<td></td>
+<td>25</td>
 <td>TestCases.CrmTest@f58853c</td></tr>
 </table><p>
 </body>
