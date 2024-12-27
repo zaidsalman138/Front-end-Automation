@@ -2,26 +2,18 @@ package TestCases;
 
 import org.testng.annotations.Test;
 
+import PageObjects.Inventory;
 import PageObjects.LandingPage;
 import PageObjects.LoginPage;
+import PageObjects.Orders;
 import PageObjects.Products;
 import Utilities.BaseClass;
-import Utilities.ExcelUtils;
 import Utilities.PropertyReader;
 
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class CrmTest extends BaseClass {
@@ -120,6 +112,52 @@ public class CrmTest extends BaseClass {
 	     productsPage.verifyDropdownButton(); // Validate Dropdown Button
 	     productsPage.verifySearchButton();  // Validate Search Button
 	 }
+	 
+	 @Test(priority = 4, description = "Navigate to Orders and Perform Validations")
+	    public void verifyOrdersNavigation() throws Exception {
+	        // Initialize the Orders page object
+	        Orders ordersPage = new Orders(driver);
+
+	        // Step-by-step navigation
+	        ordersPage.clickAppNavigator();
+	        ordersPage.hoverOnSalesMenu();
+	        ordersPage.clickOrderOption();
+
+	        // Verify the page title
+	        ordersPage.verifyPageTitle();
+	        
+	     // Verify Add Record button
+	        ordersPage.verifyAddRecordButton();
+	        
+	     // Verify Search button
+	        ordersPage.verifySearchButton();
+	        
+	     // Verify no data is displayed initially
+	        ordersPage.verifyNoDataInitially();
+
+	        // Click Search and verify data loads
+	        ordersPage.clickSearchButtonAndVerifyDataLoads();
+	        
+	    }
+	 
+	 @Test(priority = 5, description = "Navigate to Inventory and Perform Validations")
+	    public void verifyInventory() throws Exception {
+		 Inventory inventoryPage = new Inventory(driver);
+
+	        // Navigate to Inventory page
+	        inventoryPage.clickAppNavigator();
+	        inventoryPage.hoverOnInventoryMenu();
+	        inventoryPage.clickInventoryOption();
+
+	        // Verify buttons are displayed
+	        inventoryPage.verifyAddRecordButton();
+	        inventoryPage.verifySettingsButton();
+	        inventoryPage.verifySearchButton();
+	        
+	     // Verify that the table data is populated
+	        inventoryPage.verifyTableDataIsPopulated();
+	        
+	    }
 	 
 	 
 	    @AfterClass
