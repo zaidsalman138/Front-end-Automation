@@ -1,11 +1,11 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="TAL One Sanity Suite" verbose="1" parallel="tests" thread-count="5">
-    <test name="Login Functionality Tests">
+    <test name="Login Functionality Tests" parallel="classes">
         <parameter name="browser" value="chrome"/>
         <classes>
 
             <class name="TestCases.LoginAllTest"/>
-            <!--class name="TestCases.CrmTest"/-->
+            <class name="TestCases.CrmTest">
 
         </classes>
     </test>

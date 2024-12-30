@@ -1,7 +1,6 @@
 package PageObjects;
 
 import Utilities.BaseClass;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -21,7 +20,7 @@ public class CustomerView extends BaseClass {
         }
         public  void customer360view() throws InterruptedException{
 
-            @SuppressWarnings("deprecation")
+            
             WebDriverWait wait = new WebDriverWait(driver, 30);
             driver.get(propertyReader.getProperty("crmSiaUrl"));
             // Navigate to the Customer section
@@ -112,26 +111,14 @@ public class CustomerView extends BaseClass {
            waitForPageLoad();
            clickOnElement("css", "button#search_discountdetail");
 
-
-
-            /*String brmurl = propertyReader.getProperty("brmUrl");
-            driver.get(brmurl);
-            mouseOverAndClickChild("xpath", "//*[@id='account-a']/span[text()='Account']", "xpath", "//*[text()='Search Customer Account']");
-            waitForPageLoad();
-            switchToFrame("id", "zk_comp_87");
-            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-            waitAndClick(wait, By.id("txtentireaccnumber"));
-            sendTextOnElement("id", "txtentireaccnumber", CANo);
-            clickOnElement("id", "btnsearch");
-            //String brmCANo = driver.findElement(By.xpath("//*[@id='searchaccountlistbox-rows']//div[contains(text(),'CA')]")).getText();
-            //assert CANo.equalsIgnoreCase(brmCANo); */
             captureScreenshot(driver, "end_execution");
         }
 
     public void customerAccount() throws InterruptedException{
-        driver.get(propertyReader.getProperty("crmCaUrl"));
+        String crmCaUrl = propertyReader.getProperty("crmUrl") + "index.php?module=Accounts&view=List&app=SALES";
+        driver.get(crmCaUrl);
         waitForPageLoad();
-        //clickOnBlankPage(100, 100);
+        
         WebElement caStatus = driver.findElement(By.xpath("//*[@id=\"s2id_autogen5\"]/ul"));
         scrollHorizontally(caStatus);
         caStatus.click();
@@ -171,7 +158,7 @@ public class CustomerView extends BaseClass {
         waitForPageLoad();
         clickLinkByText("Bill Detail");
         waitForPageLoad();
-        clickById(driver,"Accounts_editView_fieldName_billing_account_no_select");
+       /* clickById(driver,"Accounts_editView_fieldName_billing_account_no_select");
         waitForPageLoad();
         switchToNewWindow(driver);
         clickByXpath(driver, "//*[@id='BillingAccount_popUpListView_row_1']/td[2]");
@@ -181,34 +168,76 @@ public class CustomerView extends BaseClass {
         clickOnElement("xpath", "//*[@class=\"datepicker-days\"]/table/tbody/tr[6]/td[7]");
         clickById(driver,"search_billdetail");
         waitForPageLoad();
-        captureScreenshot(driver, "bill_details");
-        navigateBack();
+        captureScreenshot(driver, "bill_details");   
+        navigateBack(); */
         clickElementByText("strong", "Accounts");
         logger.info("Clicked on Accounts Tab");
-        clickLinkByText("Contracts");
-        waitForPageLoad();
-        navigateBack();
-        clickElementByText("strong", "Accounts");
-        clickLinkByText("ServiceAccount");
-        waitForPageLoad();
-        clickElementByText("strong", "Accounts");
-        clickLinkByText("BillingAccount");
+        clickLinkByText("Contacts");
+        logger.info("Clicked on Contacts Tab");
         waitForPageLoad();
         
         clickElementByText("strong", "Accounts");
-        clickLinkByText("SIA");
+        //clickLinkByText("Service Account");
+        //clickElementByText("a", "ServiceAccount");
+        clickOnElement("xpath", "//*[@id=\"mCSB_13_container\"]/li[2]/a/span[1]/span[2]");
         waitForPageLoad();
+        clickElementByText("strong", "Accounts");
+        clickOnElement("xpath", "//*[@id=\"mCSB_13_container\"]/li[3]/a/span[1]/span[2]");
+        waitForPageLoad();
+        
+        clickElementByText("strong", "Accounts");
+        clickOnElement("xpath", "//*[@id=\"mCSB_13_container\"]/li[4]/a/span[1]/span[2]");
+        waitForPageLoad();
+        clickElementByText("strong", "Accounts");
+        clickOnElement("xpath", "//*[@id=\"mCSB_13_container\"]/li[5]/a/span[1]/span[2]");
+        waitForPageLoad();
+        
         clickElementByText("strong", "Transaction Details");
         logger.info("Clicked on Transaction Details Tab");
+        clickLinkByText("Notification History");
+        logger.info("Clicked on Notification History Tab");
+        waitForPageLoad();
+        clickLinkByText("Reward History");
+        logger.info("Clicked on Reward History Tab");
+        waitForPageLoad();
+        clickLinkByText("Usage History");
+        logger.info("Clicked on Usage History Tab");
+        waitForPageLoad();
+        clickLinkByText("Balance Details");
+        logger.info("Clicked on Balance Details Tab");
+        waitForPageLoad();
+        clickLinkByText("Invoice History");
+        logger.info("Clicked on Invoice History Tab");
+        waitForPageLoad();
+        clickLinkByText("IVR Call History");
+        logger.info("Clicked on IVR Call History Tab");
+        waitForPageLoad();
+        clickLinkByText("Recharge History");
+        logger.info("Clicked on Recharge History Tab");
+        waitForPageLoad();
+        clickLinkByText("Adjustment History");
+        logger.info("Clicked on Adjustment History Tab");
+        waitForPageLoad();
+        clickLinkByText("Payment History");
+        logger.info("Clicked on Payment History Tab");
+        waitForPageLoad();
+        clickLinkByText("Credit Limit History");
+        logger.info("Clicked on Credit Limit History Tab");
+        waitForPageLoad();
+        clickLinkByText("Recharge History");
+        logger.info("Clicked on Recharge History Tab");
         waitForPageLoad();      
-
-
-
-        
-       
-
-
-
+        clickElementByText("strong", "Others");
+        logger.info("Clicked on Others Tab");
+        waitForPageLoad();
+        clickLinkByText("Comments");
+        logger.info("Clicked on Comments Tab");
+        waitForPageLoad();
+        clickLinkByText("Documents");
+        logger.info("Clicked on Documents Tab");
+        clickLinkByText("Tickets");
+        logger.info("Clicked on Tickets Tab");
+        waitForPageLoad();
 
     }
 }
