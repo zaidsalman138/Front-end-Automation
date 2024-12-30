@@ -26,6 +26,8 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import com.epam.healenium.SelfHealingDriver;
+
 
 
 public class BaseClass {
@@ -58,7 +60,7 @@ public class BaseClass {
             // Handle unsupported browser types
             throw new IllegalArgumentException("Unsupported browser type: " + browserType);
         }
-
+        driver.manage().window().maximize();
     }
 
        /**
@@ -491,7 +493,8 @@ public class BaseClass {
             // Fallback to local ChromeDriver if WebDriverManager fails
             System.setProperty("webdriver.chrome.driver", propertyReader.getProperty("chromeDriverPath"));
         }
-        driver = new ChromeDriver();
+        WebDriver originalDriver = new ChromeDriver();
+        driver = SelfHealingDriver.create(originalDriver);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }

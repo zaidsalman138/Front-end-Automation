@@ -12,6 +12,7 @@ import org.testng.Assert;
 
 
 
+
 public class CustomerView extends BaseClass {
         private static final Logger logger = LogManager.getLogger(CustomerView.class);
         //private WebDriver driver;
@@ -149,34 +150,53 @@ public class CustomerView extends BaseClass {
         clickElementByText("span", "Order");
         waitForPageLoad();
         navigateBack();
+        clickElementByText("strong", "Order");
         clickLinkByText("Opportunities");
         waitForPageLoad();
         clickButtonByText("Search");
-        String oppTitle = driver.getTitle();
-        String oppNo = driver.findElement(By.xpath("//*[@id='Potentials_listView_row_1']/td[3]/span/span")).getText();
-        System.out.println("Opportunity No: "+oppNo);
-        captureScreenshot(driver, oppTitle);
-        clickOnBlankPage(0, 0);
-        navigateBack();
+        //String oppTitle = driver.getTitle();
+        
         clickElementByText("strong", "Order");
         clickLinkByText("Service Contracts");
     
         waitForPageLoad();
         clickButtonByText("Search");
-        clickOnBlankPage(0, 0);
-        navigateBack();
+        
         clickElementByText("strong", "Order");
         clickLinkByText("CUG VPN Details");
         captureScreenshot(driver, driver.getTitle());
-        navigateBack();
+        
         clickElementByText("strong", "Bill Details");
         logger.info("Clicked on Bill Details Tab");
         waitForPageLoad();
-        clickElementByText("span", "Bill Detail");
+        clickLinkByText("Bill Detail");
+        waitForPageLoad();
+        clickById(driver,"Accounts_editView_fieldName_billing_account_no_select");
+        waitForPageLoad();
+        switchToNewWindow(driver);
+        clickByXpath(driver, "//*[@id='BillingAccount_popUpListView_row_1']/td[2]");
+        clickById(driver,"from_date");
+        clickOnElement("xpath", "//*[@class=\"datepicker-days\"]/table/tbody/tr[1]/td[1]");
+        clickById(driver,"to_date");
+        clickOnElement("xpath", "//*[@class=\"datepicker-days\"]/table/tbody/tr[6]/td[7]");
+        clickById(driver,"search_billdetail");
+        waitForPageLoad();
         captureScreenshot(driver, "bill_details");
         navigateBack();
         clickElementByText("strong", "Accounts");
         logger.info("Clicked on Accounts Tab");
+        clickLinkByText("Contracts");
+        waitForPageLoad();
+        navigateBack();
+        clickElementByText("strong", "Accounts");
+        clickLinkByText("ServiceAccount");
+        waitForPageLoad();
+        clickElementByText("strong", "Accounts");
+        clickLinkByText("BillingAccount");
+        waitForPageLoad();
+        
+        clickElementByText("strong", "Accounts");
+        clickLinkByText("SIA");
         waitForPageLoad();
         clickElementByText("strong", "Transaction Details");
         logger.info("Clicked on Transaction Details Tab");

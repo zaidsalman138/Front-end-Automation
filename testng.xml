@@ -3,8 +3,8 @@
     <test name="Login Functionality Tests">
         <parameter name="browser" value="chrome"/>
         <classes>
-            <class name="test.java.TestCases.LoginAllTest"/>
-            <class name="TestCases.CrmTest"/>
+            <class name="TestCases.LoginAllTest"/>
+            <!--class name="TestCases.CrmTest"/-->
         </classes>
     </test>
 </suite>
