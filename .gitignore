@@ -1,2 +1,5 @@
-/target/
+target/
 /bin/
+allure-results/
+drivers/
+test-output/
