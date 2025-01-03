@@ -1,6 +1,7 @@
 package PageObjects;
 
 import Utilities.BaseClass;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -14,7 +15,7 @@ import org.testng.Assert;
 
 public class CustomerView extends BaseClass {
         private static final Logger logger = LogManager.getLogger(CustomerView.class);
-        //private WebDriver driver;
+        private WebDriver driver;
         public CustomerView(WebDriver driver) {
             this.driver = driver;
         }
@@ -23,13 +24,6 @@ public class CustomerView extends BaseClass {
             
             WebDriverWait wait = new WebDriverWait(driver, 30);
             driver.get(propertyReader.getProperty("crmSiaUrl"));
-            // Navigate to the Customer section
-            //waitAndClick(wait, By.xpath("//*[@id='appnavigator']/div/span"));
-
-            // Click on the option to create a new customer
-           // clickByXpath(driver, "//*[contains(text(), 'SALES')]");
-            
-            //mouseOverAndClickChild("xpath", "//*[contains(text(), 'SALES')]" ,"xpath","//a[contains(@href, 'ServiceInstanceAccount')]/span[2]");
             
             String siaTitle = driver.getTitle();
             System.out.println("Actual title of SIA Page " +siaTitle);
@@ -38,15 +32,10 @@ public class CustomerView extends BaseClass {
             WebElement siaStatus = driver.findElement(By.xpath("//*[@id='s2id_autogen3']"));
             siaStatus.click();
             selectTextFromNestedList("//*[@id='select2-drop']/ul", "Active");
-        // Assuming you have a BaseClass instance
-        // Click on a blank area of the page at coordinates (100, 100)
             clickOnBlankPage(100, 100);
-            //Thread.sleep(10);
             clickButtonByText("Search");
             waitForPageLoad();
-            
-           // logger.info("Created Customer name is: {}", confirmationMessage);
-           // assert confirmationMessage.equalsIgnoreCase("Customers - FN"+customername+ "LN"+customername);
+
            WebElement siaNo = driver.findElement(By.xpath("//*[@id='ServiceInstanceAccount_listView_row_2']/td[2]/span/span"));
            String SIANo = siaNo.getText();
            logger.info("Service Instance Account No.: ", siaNo.getText());
@@ -71,13 +60,11 @@ public class CustomerView extends BaseClass {
            clickByXpath(driver, "//*[@class='tab-icon']/i[@title='Tickets']");
            logger.info("Clicked on Tickets Tab");
            waitForPageLoad();
-           //[title='View Contract by SI']
            clickOnElement("css", ".tab-item:nth-child(6) .custom-module");
            logger.info("Clicked on Recharge History Tab");
-           
            waitForPageLoad();
            clickOnElement("css", ".tab-item:nth-child(7) .custom-module");
-           
+           logger.info("Clicked on View Contract by SI Tab");
            
            waitForPageLoad();
            clickById(driver,"view_contract_by_si");
@@ -85,7 +72,6 @@ public class CustomerView extends BaseClass {
            waitForPageLoad();
            clickOnElement("css", ".tab-item:nth-child(8) .custom-module");
            logger.info("Clicked on BTH Tab");
-           
            waitForPageLoad();
 
            clickOnElement("css", ".tab-item:nth-child(9) .custom-module");
@@ -111,7 +97,7 @@ public class CustomerView extends BaseClass {
            waitForPageLoad();
            clickOnElement("css", "button#search_discountdetail");
 
-            captureScreenshot(driver, "end_execution");
+           captureScreenshot(driver, "end_execution");
         }
 
     public void customerAccount() throws InterruptedException{
@@ -134,14 +120,15 @@ public class CustomerView extends BaseClass {
         waitForPageLoad();
         clickElementByText("strong", "Order");
         logger.info("Clicked on Order Tab");
-        clickElementByText("span", "Order");
+        //clickElementByText("span", "Order");
+        clickByXpath(driver, "//span[@class='content' and contains(text(), 'Order')]");
         waitForPageLoad();
-        navigateBack();
+        //navigateBack();
         clickElementByText("strong", "Order");
         clickLinkByText("Opportunities");
         waitForPageLoad();
         clickButtonByText("Search");
-        //String oppTitle = driver.getTitle();
+        
         
         clickElementByText("strong", "Order");
         clickLinkByText("Service Contracts");
@@ -158,27 +145,25 @@ public class CustomerView extends BaseClass {
         waitForPageLoad();
         clickLinkByText("Bill Detail");
         waitForPageLoad();
-       /* clickById(driver,"Accounts_editView_fieldName_billing_account_no_select");
+        clickById(driver,"Accounts_editView_fieldName_billing_account_no_select");
         waitForPageLoad();
         switchToNewWindow(driver);
         clickByXpath(driver, "//*[@id='BillingAccount_popUpListView_row_1']/td[2]");
-        clickById(driver,"from_date");
-        clickOnElement("xpath", "//*[@class=\"datepicker-days\"]/table/tbody/tr[1]/td[1]");
+        selectDateOneYearBack("from_date");
+        waitForPageLoad();
         clickById(driver,"to_date");
-        clickOnElement("xpath", "//*[@class=\"datepicker-days\"]/table/tbody/tr[6]/td[7]");
+        clickOnElement("css", "td.today.day");
+        waitForPageLoad();
         clickById(driver,"search_billdetail");
         waitForPageLoad();
         captureScreenshot(driver, "bill_details");   
-        navigateBack(); */
+        //navigateBack(); 
         clickElementByText("strong", "Accounts");
         logger.info("Clicked on Accounts Tab");
         clickLinkByText("Contacts");
         logger.info("Clicked on Contacts Tab");
         waitForPageLoad();
-        
         clickElementByText("strong", "Accounts");
-        //clickLinkByText("Service Account");
-        //clickElementByText("a", "ServiceAccount");
         clickOnElement("xpath", "//*[@id=\"mCSB_13_container\"]/li[2]/a/span[1]/span[2]");
         waitForPageLoad();
         clickElementByText("strong", "Accounts");
@@ -188,42 +173,56 @@ public class CustomerView extends BaseClass {
         clickElementByText("strong", "Accounts");
         clickOnElement("xpath", "//*[@id=\"mCSB_13_container\"]/li[4]/a/span[1]/span[2]");
         waitForPageLoad();
-        clickElementByText("strong", "Accounts");
-        clickOnElement("xpath", "//*[@id=\"mCSB_13_container\"]/li[5]/a/span[1]/span[2]");
-        waitForPageLoad();
         
         clickElementByText("strong", "Transaction Details");
         logger.info("Clicked on Transaction Details Tab");
         clickLinkByText("Notification History");
+        captureScreenshot(driver, "notification_history");
         logger.info("Clicked on Notification History Tab");
-        waitForPageLoad();
+
+        clickById(driver,"searchNotificationHistory");
+        captureScreenshot(driver, "notification_history_search");
+        clickElementByText("strong", "Transaction Details");
         clickLinkByText("Reward History");
         logger.info("Clicked on Reward History Tab");
         waitForPageLoad();
+        captureScreenshot(driver, "reward_history_search");
+        clickElementByText("strong", "Transaction Details");
         clickLinkByText("Usage History");
         logger.info("Clicked on Usage History Tab");
         waitForPageLoad();
+        captureScreenshot(driver, "usage_history_search");
+        clickElementByText("strong", "Transaction Details");
         clickLinkByText("Balance Details");
         logger.info("Clicked on Balance Details Tab");
-        waitForPageLoad();
+        captureScreenshot(driver, "balance_details_search");
+        clickElementByText("strong", "Transaction Details");
         clickLinkByText("Invoice History");
         logger.info("Clicked on Invoice History Tab");
-        waitForPageLoad();
+        captureScreenshot(driver, "invoice_history_search");
+        clickElementByText("strong", "Transaction Details");
         clickLinkByText("IVR Call History");
         logger.info("Clicked on IVR Call History Tab");
-        waitForPageLoad();
+        captureScreenshot(driver, "ivr_call_history_search");
+        clickElementByText("strong", "Transaction Details");
         clickLinkByText("Recharge History");
         logger.info("Clicked on Recharge History Tab");
-        waitForPageLoad();
+        captureScreenshot(driver, "recharge_history_search");
+        clickElementByText("strong", "Transaction Details");
         clickLinkByText("Adjustment History");
         logger.info("Clicked on Adjustment History Tab");
         waitForPageLoad();
+        captureScreenshot(driver, "adjustment_history_search");
+        clickElementByText("strong", "Transaction Details");
         clickLinkByText("Payment History");
         logger.info("Clicked on Payment History Tab");
-        waitForPageLoad();
+        captureScreenshot(driver, "payment_history_search");
+        clickElementByText("strong", "Transaction Details");
         clickLinkByText("Credit Limit History");
         logger.info("Clicked on Credit Limit History Tab");
         waitForPageLoad();
+        captureScreenshot(driver, "credit_limit_history_search");
+        clickElementByText("strong", "Transaction Details");
         clickLinkByText("Recharge History");
         logger.info("Clicked on Recharge History Tab");
         waitForPageLoad();      
@@ -233,11 +232,17 @@ public class CustomerView extends BaseClass {
         clickLinkByText("Comments");
         logger.info("Clicked on Comments Tab");
         waitForPageLoad();
+        clickElementByText("strong", "Others");
         clickLinkByText("Documents");
         logger.info("Clicked on Documents Tab");
+        waitForPageLoad();
+        clickElementByText("strong", "Others");
         clickLinkByText("Tickets");
         logger.info("Clicked on Tickets Tab");
         waitForPageLoad();
 
     }
+
+    
+    
 }

@@ -61,8 +61,10 @@ public class LoginAllTest extends BaseClass {
         "http://dauthuat.one.al/dauthorization/ui/STL/index.html#/home"
     );
 
+
     @BeforeMethod
     public void setUp() {
+      
         propertyReader = new PropertyReader();
         propertyReader.loadProperties();
         System.setProperty("webdriver.chrome.driver", propertyReader.getProperty("chromeDriverPath"));
