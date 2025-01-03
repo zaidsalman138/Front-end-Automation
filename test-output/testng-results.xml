@@ -2,40 +2,52 @@
 <testng-results ignored="0" total="6" passed="5" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-12-27T20:21:13 PKT" name="TAL One Sanity Suite" finished-at="2024-12-27T20:26:37 PKT" duration-ms="323824">
+  <suite started-at="2025-01-03T19:09:55 PKT" name="TAL One Sanity Suite" finished-at="2025-01-03T19:15:55 PKT" duration-ms="360148">
     <groups>
     </groups>
-    <test started-at="2024-12-27T20:21:13 PKT" name="Login Functionality Tests" finished-at="2024-12-27T20:26:37 PKT" duration-ms="323824">
-      <class name="TestCases.CrmTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:TestCases.CrmTest@f58853c]" started-at="2024-12-27T20:21:13 PKT" name="setup" finished-at="2024-12-27T20:21:23 PKT" duration-ms="9822" status="PASS">
+    <test started-at="2025-01-03T19:09:55 PKT" name="Login Functionality Tests" finished-at="2025-01-03T19:15:55 PKT" duration-ms="360148">
+      <class name="TestCases.BrmTest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-03T19:09:55 PKT" name="setup" finished-at="2025-01-03T19:10:20 PKT" duration-ms="25430" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="loginCRM()[pri:0, instance:TestCases.CrmTest@f58853c]" started-at="2024-12-27T20:21:23 PKT" name="loginCRM" finished-at="2024-12-27T20:22:30 PKT" duration-ms="67148" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- loginCRM -->
-        <test-method signature="testPaymentModuleNavigation()[pri:2, instance:TestCases.CrmTest@f58853c]" started-at="2024-12-27T20:22:30 PKT" name="testPaymentModuleNavigation" description="Wait, hover, and click Payment module" finished-at="2024-12-27T20:24:53 PKT" duration-ms="143198" status="FAIL">
-          <exception class="org.openqa.selenium.TimeoutException">
+        <test-method signature="loginCRM()[pri:0, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-03T19:10:20 PKT" name="loginCRM" finished-at="2025-01-03T19:10:39 PKT" duration-ms="18507" status="FAIL">
+          <exception class="org.openqa.selenium.NoSuchElementException">
             <message>
-              <![CDATA[Expected condition failed: waiting for visibility of element located by By.xpath: //div[@id='PAYMENT_modules_dropdownMenu']//div[@class='menu-items-wrapper app-menu-items-wrapper'] (tried for 100 second(s) with 500 MILLISECONDS interval)
+              <![CDATA[Unable to locate element: #username
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '3.8.0', revision: '924c4067df', time: '2017-11-30T11:20:39.408Z'
-System info: host: 'DESKTOP-J707CE4', ip: '192.168.42.112', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '23.0.1'
+System info: host: 'DESKTOP-J707CE4', ip: '192.168.0.109', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '23.0.1'
 Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 133.0.3, javascriptEnabled: true, moz:accessibilityChecks: false, moz:buildID: 20241209150345, moz:geckodriverVersion: 0.35.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 5680, moz:profile: C:\Users\HP\AppData\Local\T..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10....}
-Session ID: 2288184b-8ce8-45b8-89ee-e4005bddaebe]]>
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 133.0.3, javascriptEnabled: true, moz:accessibilityChecks: false, moz:buildID: 20241209150345, moz:geckodriverVersion: 0.35.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 17436, moz:profile: C:\Users\HP\AppData\Local\T..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10....}
+Session ID: ecbea9e0-ef2a-4484-a92a-63e13424b338
+*** Element info: {Using=id, value=username}]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //div[@id='PAYMENT_modules_dropdownMenu']//div[@class='menu-items-wrapper app-menu-items-wrapper'] (tried for 100 second(s) with 500 MILLISECONDS interval)
+              <![CDATA[org.openqa.selenium.NoSuchElementException: Unable to locate element: #username
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '3.8.0', revision: '924c4067df', time: '2017-11-30T11:20:39.408Z'
-System info: host: 'DESKTOP-J707CE4', ip: '192.168.42.112', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '23.0.1'
+System info: host: 'DESKTOP-J707CE4', ip: '192.168.0.109', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '23.0.1'
 Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 133.0.3, javascriptEnabled: true, moz:accessibilityChecks: false, moz:buildID: 20241209150345, moz:geckodriverVersion: 0.35.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 5680, moz:profile: C:\Users\HP\AppData\Local\T..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10....}
-Session ID: 2288184b-8ce8-45b8-89ee-e4005bddaebe
-at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:82)
-at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:231)
-at PageObjects.LandingPage.hoverOverPaymentModuleDropdown(LandingPage.java:40)
-at TestCases.CrmTest.testPaymentModuleNavigation(CrmTest.java:85)
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 133.0.3, javascriptEnabled: true, moz:accessibilityChecks: false, moz:buildID: 20241209150345, moz:geckodriverVersion: 0.35.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 17436, moz:profile: C:\Users\HP\AppData\Local\T..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10....}
+Session ID: ecbea9e0-ef2a-4484-a92a-63e13424b338
+*** Element info: {Using=id, value=username}
+at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:485)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:601)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:371)
+at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:417)
+at org.openqa.selenium.By$ById.findElement(By.java:218)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:363)
+at PageObjects.LoginPage.enterUsername(LoginPage.java:39)
+at PageObjects.LoginPage.loginAs(LoginPage.java:69)
+at TestCases.BrmTest.loginCRM(BrmTest.java:64)
 at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
@@ -46,48 +58,84 @@ at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java
 at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
 at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
 at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-at org.testng.TestRunner.privateRun(TestRunner.java:794)
-at org.testng.TestRunner.run(TestRunner.java:596)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
-at org.testng.SuiteRunner.access$000(SuiteRunner.java:28)
-at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:418)
-at org.testng.internal.thread.ThreadUtil.lambda$execute$0(ThreadUtil.java:64)
-at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
 at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
 at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
 at java.base/java.lang.Thread.run(Thread.java:1575)
 ]]>
             </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.TimeoutException -->
+          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testPaymentModuleNavigation -->
-        <test-method signature="testProductsPageNavigation()[pri:3, instance:TestCases.CrmTest@f58853c]" started-at="2024-12-27T20:24:53 PKT" name="testProductsPageNavigation" description="Navigate to Products page and validate elements" finished-at="2024-12-27T20:25:19 PKT" duration-ms="25607" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testProductsPageNavigation -->
-        <test-method signature="verifyOrdersNavigation()[pri:4, instance:TestCases.CrmTest@f58853c]" started-at="2024-12-27T20:25:19 PKT" name="verifyOrdersNavigation" description="Navigate to Orders and Perform Validations" finished-at="2024-12-27T20:26:00 PKT" duration-ms="40852" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyOrdersNavigation -->
-        <test-method signature="verifyInventory()[pri:5, instance:TestCases.CrmTest@f58853c]" started-at="2024-12-27T20:26:00 PKT" name="verifyInventory" description="Navigate to Inventory and Perform Validations" finished-at="2024-12-27T20:26:10 PKT" duration-ms="10702" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyInventory -->
-        <test-method signature="verifyTicketsNavigation()[pri:6, instance:TestCases.CrmTest@f58853c]" started-at="2024-12-27T20:26:10 PKT" name="verifyTicketsNavigation" description="Navigate to Tickets and Perform Validations" finished-at="2024-12-27T20:26:36 PKT" duration-ms="25977" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyTicketsNavigation -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:TestCases.CrmTest@f58853c]" started-at="2024-12-27T20:26:36 PKT" name="tearDown" finished-at="2024-12-27T20:26:37 PKT" duration-ms="408" status="PASS">
+        </test-method> <!-- loginCRM -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-03T19:10:39 PKT" name="tearDown" finished-at="2025-01-03T19:10:40 PKT" duration-ms="1683" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="cleanUp()[pri:0, instance:TestCases.CrmTest@f58853c]" started-at="2024-12-27T20:26:37 PKT" name="cleanUp" finished-at="2024-12-27T20:26:37 PKT" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-03T19:10:41 PKT" name="setup" finished-at="2025-01-03T19:11:01 PKT" duration-ms="20474" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="testSearchCustomerAccount()[pri:2, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-03T19:11:01 PKT" name="testSearchCustomerAccount" description="Verify Search Customer Account functionality" finished-at="2025-01-03T19:11:28 PKT" duration-ms="26849" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testSearchCustomerAccount -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-03T19:11:28 PKT" name="tearDown" finished-at="2025-01-03T19:11:29 PKT" duration-ms="1426" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-03T19:11:29 PKT" name="setup" finished-at="2025-01-03T19:11:52 PKT" duration-ms="22463" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="testSearchBill()[pri:3, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-03T19:11:52 PKT" name="testSearchBill" description="Test Search Bill functionality" finished-at="2025-01-03T19:11:55 PKT" duration-ms="3209" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testSearchBill -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-03T19:11:55 PKT" name="tearDown" finished-at="2025-01-03T19:11:56 PKT" duration-ms="1388" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-03T19:11:56 PKT" name="setup" finished-at="2025-01-03T19:12:17 PKT" duration-ms="20656" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="testInfraServiceConfiguration()[pri:4, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-03T19:12:17 PKT" name="testInfraServiceConfiguration" description="Test Infra Service Configuration functionality" finished-at="2025-01-03T19:13:36 PKT" duration-ms="79225" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testInfraServiceConfiguration -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-03T19:13:36 PKT" name="tearDown" finished-at="2025-01-03T19:13:38 PKT" duration-ms="1584" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-03T19:13:38 PKT" name="setup" finished-at="2025-01-03T19:14:05 PKT" duration-ms="27322" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="testBulkOperation()[pri:5, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-03T19:14:05 PKT" name="testBulkOperation" description="Test Bulk Operation functionality" finished-at="2025-01-03T19:15:24 PKT" duration-ms="79159" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testBulkOperation -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-03T19:15:24 PKT" name="tearDown" finished-at="2025-01-03T19:15:26 PKT" duration-ms="1601" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-03T19:15:26 PKT" name="setup" finished-at="2025-01-03T19:15:51 PKT" duration-ms="25157" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="testSearchInventory()[pri:6, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-03T19:15:51 PKT" name="testSearchInventory" description="Test Search Inventory functionality" finished-at="2025-01-03T19:15:54 PKT" duration-ms="2566" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testSearchInventory -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-03T19:15:54 PKT" name="tearDown" finished-at="2025-01-03T19:15:55 PKT" duration-ms="1287" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="cleanUp()[pri:0, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-03T19:15:55 PKT" name="cleanUp" finished-at="2025-01-03T19:15:55 PKT" duration-ms="2" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- cleanUp -->
-      </class> <!-- TestCases.CrmTest -->
+      </class> <!-- TestCases.BrmTest -->
     </test> <!-- Login Functionality Tests -->
   </suite> <!-- TAL One Sanity Suite -->
 </testng-results>

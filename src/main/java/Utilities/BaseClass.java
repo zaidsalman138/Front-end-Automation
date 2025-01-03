@@ -437,6 +437,9 @@ public class BaseClass {
             logger.error("Page load wait error: " + e.getMessage());
         }
     }
+    
+    
+    
     public void clickElementMultipleTimes(WebDriver driver, String locator, int times) {
     // Find the element using CSS selector
       WebElement element = driver.findElement(By.xpath(locator));
@@ -744,4 +747,6 @@ public class BaseClass {
             throw new RuntimeException("Failed to click on link with text '" + linkText + "'", e);
         }
     }
+    
+  
 }

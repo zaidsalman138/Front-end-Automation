@@ -3,14 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="TestCases.CrmTest">
+      <class name="TestCases.BrmTest">
         <methods>
-          <include name="tearDown"/>
-          <include name="testPaymentModuleNavigation"/>
-          <include name="cleanUp"/>
+          <include name="testSearchCustomerAccount"/>
           <include name="setup"/>
+          <include name="cleanUp"/>
+          <include name="tearDown"/>
+          <include name="loginCRM"/>
         </methods>
-      </class> <!-- TestCases.CrmTest -->
+      </class> <!-- TestCases.BrmTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
