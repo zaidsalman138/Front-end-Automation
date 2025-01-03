@@ -35,11 +35,11 @@ public class CrmUiTest extends BaseClass {
         
         // Navigate and wait for page load
         driver.get(propertyReader.getProperty("crmUrl"));
-        waitForPageLoad();
+        waitForPageLoad(driver);
         
         // Perform login
-        loginPage.loginAs(username, password);
-        waitForPageLoad();  // Wait after login
+        loginPage.loginAs(driver,username, password);
+        waitForPageLoad(driver);  // Wait after login
         
         String expectedCrmUrl = propertyReader.getProperty("expectedCrmUrl");
         Thread.sleep(5000);
@@ -66,8 +66,8 @@ public class CrmUiTest extends BaseClass {
         String password = propertyReader.getProperty("password");
         // Perform login
         driver.get(propertyReader.getProperty("brmUrl"));
-        loginPage.loginAs(username, password);
-        waitForPageLoad();  // Wait after login
+        loginPage.loginAs(driver,username, password);
+        waitForPageLoad(driver);  // Wait after login
         String expectedBrmTitle = propertyReader.getProperty("expectedBrmTitle");
         Thread.sleep(5000);
         String actualBrmTitle = driver.getTitle();

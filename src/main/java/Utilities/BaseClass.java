@@ -13,6 +13,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+
+import PageObjects.CustomerView;
+import PageObjects.LoginPage;
+
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -35,14 +39,18 @@ import org.slf4j.LoggerFactory;
 
 
 public class BaseClass {
-    protected WebDriver driver;
+    protected static WebDriver driver;
     protected static PropertyReader propertyReader;
     JavascriptExecutor js = (JavascriptExecutor) driver;
     ActionMap actionMap = new ActionMap();
     private static final Logger logger = LoggerFactory.getLogger(BaseClass.class);
- 
+    public LoginPage loginPage;
+    public CustomerView customerView;
+
     @BeforeClass
     public void setup() {
+        loginPage = new LoginPage(driver);
+        customerView = new CustomerView(driver);
         // Initialize the PropertyReader
         propertyReader = new PropertyReader();
         // Load the configuration properties
@@ -66,6 +74,7 @@ public class BaseClass {
             throw new IllegalArgumentException("Unsupported browser type: " + browserType);
         }
         driver.manage().window().maximize();
+        
 
     }
 
@@ -74,7 +83,7 @@ public class BaseClass {
      * @param pixels Number of pixels to scroll. Positive for right, negative for left.
      */
     
-    public void scrollHorizontally(WebElement targetElement) {
+    public void scrollHorizontally(WebDriver driver, WebElement targetElement) {
         try {
             JavascriptExecutor js = (JavascriptExecutor) driver;
             js.executeScript("arguments[0].scrollIntoView(true);", targetElement);
@@ -92,7 +101,7 @@ public class BaseClass {
         }
     }
 
-    public WebElement clickOnElement(String locatorType, String locatorValue) {
+    public WebElement clickOnElement(WebDriver driver, String locatorType, String locatorValue) {
         WebElement element = null;
         switch (locatorType.toLowerCase()) {
             case "id":
@@ -143,7 +152,7 @@ public class BaseClass {
         }
         return element;
     }
-    public WebElement clickandSendTextOnElement(String locatorType, String locatorValue, String FieldValue) {
+    public WebElement clickandSendTextOnElement(WebDriver driver,String locatorType, String locatorValue, String FieldValue) {
         WebElement element = null;
         switch (locatorType.toLowerCase()) {
             case "id":
@@ -202,7 +211,7 @@ public class BaseClass {
         }
         return element;
     }
-    public void scrollDowntoElement( String elementType,String elementData) { 
+    public void scrollDowntoElement( WebDriver driver,String elementType,String elementData) { 
         
       try{      
           WebElement element = findElementByType(elementType, elementData);
@@ -296,7 +305,7 @@ public class BaseClass {
         }
     }
     
-    public void waitForElementToBeClickable(By locator, int timeoutInSeconds) {
+    public void waitForElementToBeClickable(WebDriver driver,By locator, int timeoutInSeconds) {
         WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
         wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
@@ -308,11 +317,11 @@ public class BaseClass {
         actionMap.performAction(driver ,"open browser","");
 
     }
-    public void selectFromDropdown(WebElement dropdownElement, String value) {
+    public void selectFromDropdown(WebDriver driver,WebElement dropdownElement, String value) {
         Select dropdown = new Select(dropdownElement);   //*[@id="select2-drop"]
         dropdown.selectByVisibleText(value);
     }
-    public void selectFromCustomDropdown(WebElement dropdownElement, String value) {
+    public void selectFromCustomDropdown(WebDriver driver,WebElement dropdownElement, String value) {
         dropdownElement.click();
         WebElement option = dropdownElement.findElement(By.xpath("//option[contains(text(), '"+value+"')]"));
         option.click();
@@ -328,20 +337,12 @@ public class BaseClass {
                 driver.switchTo().window(windowHandle);
                 System.out.println("Switched to new window: " + driver.getTitle());
     
-                // Perform your actions on the new window here
-                // Example: driver.findElement(By.id("someElement")).click();
-    
-                // Close the new window if needed
-              //  driver.close();
-    
                 // Break out of the loop once the required window is found and actions are performed
                 break;
             }
         }
     
-        // Switch back to the original window
-       // driver.switchTo().window(originalWindowHandle);
-        //System.out.println("Switched back to original window: " + driver.getTitle());
+                
     }
 
     public void switchToOriginWindow(WebDriver driver) {
@@ -389,7 +390,7 @@ public class BaseClass {
     public String intToString(int num) {
         return Integer.toString(num);
     }
-    public void waitForPageLoad() {
+    public void waitForPageLoad(WebDriver driver) {
         try {
             
             WebDriverWait wait = new WebDriverWait(driver, 30); // Set initial wait time to 30 seconds
@@ -465,13 +466,13 @@ public class BaseClass {
         element.isDisplayed();
         element.click();
     }
-    public void mouseOverAndClick(String locatorType, String locatorValue) {
+    public void mouseOverAndClick(WebDriver driver,String locatorType, String locatorValue) {
         Actions actions = new Actions(driver);
         WebElement element = findElementByType(locatorType, locatorValue);
     
         actions.moveToElement(element).click().build().perform();
     }
-    public void mouseOverAndClickChild(String parentLocatorType, String parentLocatorValue, String childLocatorType, String childLocatorValue) {
+    public void mouseOverAndClickChild(WebDriver driver,String parentLocatorType, String parentLocatorValue, String childLocatorType, String childLocatorValue) {
       Actions actions = new Actions(driver);
     
       // Find the parent element and perform mouse over
@@ -486,7 +487,7 @@ public class BaseClass {
        actions.moveToElement(childElement).click().build().perform();
     }
 
-    public void switchToFrame(String locatorType, String locatorValue) {
+    public void switchToFrame(WebDriver driver,String locatorType, String locatorValue) {
         WebDriverWait wait = new WebDriverWait(driver, 10); // 10 seconds wait time
         WebElement frameElement = findElementByType(locatorType, locatorValue);
         wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frameElement));
@@ -545,7 +546,7 @@ public class BaseClass {
     }
 
     // Overloaded method to find exact href match
-    public WebElement findElementByExactHref(String exactHref) {
+    public WebElement findElementByExactHref(WebDriver driver,String exactHref) {
         try {
             String xpathExpression = "//a[@href='" + exactHref + "']";
             WebDriverWait wait = new WebDriverWait(driver, 10);
@@ -559,14 +560,14 @@ public class BaseClass {
         }
     }
 
-    public void clickButtonByText(String buttonText) {
+    public void clickButtonByText(WebDriver driver, String buttonText) {
         try {
             WebDriverWait wait = new WebDriverWait(driver, 10);
             String xpathExpression = "//button[text()='"+ buttonText +"']";
             WebElement button = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpathExpression)));
             
             button.click();
-            waitForPageLoad();
+            waitForPageLoad(driver);
             logger.debug("Clicked on button with text: '{}'", buttonText);
         } catch (Exception e) {
             logger.error("Failed to click on button with text '{}': {}", buttonText, e.getMessage());
@@ -593,10 +594,10 @@ public class BaseClass {
         }
     }
 
-    public void selectTextFromNestedList(String listLocator, String textToSelect) {
+    public void selectTextFromNestedList(WebDriver driver, String listLocator, String textToSelect) {
         try {
             WebDriverWait wait = new WebDriverWait(driver, 10);
-            WebElement listElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(listLocator)));
+             WebElement listElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(listLocator)));
             
             // Find all ul elements within the list element
             List<WebElement> ulElements = listElement.findElements(By.tagName("li"));
@@ -623,7 +624,7 @@ public class BaseClass {
         }
     }
 
-    public void clickTextFromNestedList(String listLocator, String textToClcik) {
+    public void clickTextFromNestedList(WebDriver driver,String listLocator, String textToClcik) {
         try {
             WebDriverWait wait = new WebDriverWait(driver, 10);
             WebElement listElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(listLocator)));
@@ -648,7 +649,7 @@ public class BaseClass {
         }
     }
 
-    public void clickTextFromNestedList(String locatorType, String listLocator, String textToClcik) {
+    public void clickTextFromNestedList(WebDriver driver,String locatorType, String listLocator, String textToClcik) {
         try {
             WebDriverWait wait = new WebDriverWait(driver, 10);
             By locator = getByLocator(locatorType, listLocator);
@@ -697,7 +698,7 @@ public class BaseClass {
         }
     }
 
-    public void clickOnBlankPage(int x, int y) {
+    public void clickOnBlankPage(WebDriver driver, int x, int y) {
         try {
             JavascriptExecutor js = (JavascriptExecutor) driver;
             String script = "document.elementFromPoint(arguments[0], arguments[1]).click();";
@@ -709,7 +710,7 @@ public class BaseClass {
         }
     }
 
-    public void clickOnElementByXPath(String xpath) {
+    public void clickOnElementByXPath(WebDriver driver,String xpath) {
         try {
             WebElement element = driver.findElement(By.xpath(xpath));
             element.click();
@@ -720,7 +721,7 @@ public class BaseClass {
         }
     }
 
-    public void clickElementByText(String tagName, String text) {
+    public void clickElementByText(WebDriver driver,String tagName, String text) {
         try {
             String xpath = String.format("//%s[text()='%s']", tagName, text);
             WebElement element = driver.findElement(By.xpath(xpath));
@@ -732,18 +733,18 @@ public class BaseClass {
         }
     }
 
-    public void navigateBack() {
+    public void navigateBack(WebDriver driver) {
         try {
             driver.navigate().back();
             logger.debug("Navigated back to the previous page.");
-            waitForPageLoad();
+            waitForPageLoad(driver);
         } catch (Exception e) {
             logger.error("Failed to navigate back: {}", e.getMessage());
             throw new RuntimeException("Failed to navigate back to the previous page", e);
         }
     }
 
-    public void clickLinkByText(String linkText) {
+    public void clickLinkByText(WebDriver driver,String linkText) {
         try {
             WebElement link = driver.findElement(By.linkText(linkText));
             link.click();
@@ -756,7 +757,7 @@ public class BaseClass {
 
 
     //Select Date One Year Back
-    public void selectDateOneYearBack(String byId) throws InterruptedException {
+    public void selectDateOneYearBack(WebDriver driver,String byId) throws InterruptedException {
         try {
           
             // Calculate the date one year back
@@ -769,7 +770,7 @@ public class BaseClass {
             // Open the calendar widget
             WebElement calendarInput = driver.findElement(By.id(byId));
             calendarInput.click();
-            waitForPageLoad();
+            waitForPageLoad(driver);
             // Navigate to the desired year and month
             // This part depends on the specific calendar widget implementation
             // Example: Click the previous year button until the correct year is displayed
@@ -795,7 +796,7 @@ public class BaseClass {
         }
     }
 
-    public void clickByName(String name) {
+    public void clickByName(WebDriver driver,String name) {
         try {
             WebElement element = driver.findElement(By.name(name));
             element.click();

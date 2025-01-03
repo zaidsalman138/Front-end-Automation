@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import java.util.Arrays;
 import java.util.List;
 import io.qameta.allure.Description;
@@ -12,6 +13,7 @@ import PageObjects.LoginPage;
 import PageObjects.CustomerView;
 import Utilities.PropertyReader;
 import Utilities.BaseClass;
+import DriverManager.WebDriverManager;
 //import org.testng.Assert;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -19,7 +21,7 @@ import org.apache.logging.log4j.Logger;
 
 
 public class LoginAllTest extends BaseClass {
-    private WebDriver driver;
+    public static WebDriver driver;
     private PropertyReader propertyReader;
     private LoginPage loginPage;
     private CustomerView customerView;
@@ -62,11 +64,12 @@ public class LoginAllTest extends BaseClass {
     );
 
 
-    @BeforeMethod
+    @BeforeClass
     public void setUp() {
       
         propertyReader = new PropertyReader();
         propertyReader.loadProperties();
+        String browserType = propertyReader.getProperty("browserType");
         System.setProperty("webdriver.chrome.driver", propertyReader.getProperty("chromeDriverPath"));
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -80,7 +83,7 @@ public class LoginAllTest extends BaseClass {
         String username = propertyReader.getProperty("username");
         String password = propertyReader.getProperty("password");
         driver.get(propertyReader.getProperty("crmUrl"));
-        loginAs(username, password);
+        loginAs(driver,username, password);
         loginPage.verifyLoginForUrls(SIT_URLS, "SIT");
     }
 
@@ -91,22 +94,22 @@ public class LoginAllTest extends BaseClass {
         String username = propertyReader.getProperty("UAT_username");
         String password = propertyReader.getProperty("UAT_password");
         driver.get(propertyReader.getProperty("crmUrl"));
-        loginAs(username, password);
+        loginAs(driver,username, password);
         loginPage.verifyLoginForUrls(UAT_URLS, "UAT");
     }
 
 
     @Step("Login attempt for {url}")
-    private void loginAs(String username, String password) throws InterruptedException {
+    private void loginAs(WebDriver driver,String username, String password) throws InterruptedException {
         try {
             Thread.sleep(2000);
             logger.debug("Entering username: {}", username);
-            loginPage.enterUsername(username);
+            loginPage.enterUsername(driver,username);
             logger.debug("Entering password");
-            loginPage.enterPassword(password);
+            loginPage.enterPassword(driver,password);
             logger.debug("Clicking login button");
-            loginPage.clickLoginButton();
-            waitForPageLoad();
+            loginPage.clickLoginButton(driver);
+            waitForPageLoad(driver);
             logger.debug("Login attempt completed");
             
         } catch (Exception e) {
@@ -120,8 +123,8 @@ public class LoginAllTest extends BaseClass {
         String username = propertyReader.getProperty("username");
         String password = propertyReader.getProperty("password");
         driver.get(propertyReader.getProperty("crmUrl"));
-        loginAs(username, password);
-        customerView.customer360view();
+        loginAs(driver,username, password);
+        customerView.customer360view(driver);
         String siaTitle = driver.getTitle();
         Assert.assertEquals(siaTitle, "Service Instance Account", "SIA Title does not matched");
     
@@ -132,8 +135,8 @@ public class LoginAllTest extends BaseClass {
         String username = propertyReader.getProperty("username");
         String password = propertyReader.getProperty("password");
         driver.get(propertyReader.getProperty("crmUrl"));
-        loginAs(username, password);
-        customerView.customerAccount();
+        loginAs(driver,username, password);
+        customerView.customerAccount(driver);
         captureScreenshot(driver, "customerAccount_end_of_test");
     }
     @AfterMethod
@@ -142,4 +145,8 @@ public class LoginAllTest extends BaseClass {
             driver.quit();
         }
     }
+
+
+
+    
 }

@@ -34,7 +34,7 @@ public class LoginPage extends BaseClass {
     }
     
     // Method to enter username
-    public void enterUsername(String username) {
+    public void enterUsername(WebDriver driver,String username) {
 
         WebElement usernameField = driver.findElement(usernameLocator);
         WebDriverWait wait = new WebDriverWait(driver, 30); // Wait for up to 10 seconds
@@ -46,7 +46,7 @@ public class LoginPage extends BaseClass {
     }
 
     // Method to enter password
-    public void enterPassword(String password) {
+    public void enterPassword(WebDriver driver,String password) {
         WebElement passwordField = driver.findElement(passwordLocator);
         if (passwordField.isDisplayed()) {
             passwordField.sendKeys(password);
@@ -54,7 +54,7 @@ public class LoginPage extends BaseClass {
     }
 
     // Method to click on the login button
-    public void clickLoginButton() {
+    public void clickLoginButton(WebDriver driver) {
         WebElement loginButton = driver.findElement(loginButtonLocator);
         if (loginButton.isDisplayed() && loginButton.isEnabled()) {
             loginButton.click();
@@ -62,15 +62,15 @@ public class LoginPage extends BaseClass {
     }
 
     // Method to perform login
-    public void loginAs(String username, String password) {
+    public void loginAs(WebDriver driver,String username, String password) {
        // openBrowser();
-        waitForPageLoad();
+        waitForPageLoad(driver);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        enterUsername(username);
+        enterUsername(driver,username);
         scrollDown(0,1000);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        enterPassword(password);
-        clickLoginButton();
+        enterPassword(driver,password);
+        clickLoginButton(driver);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
     public void verifyLoginForUrls(List<String> urls, String environment) {
@@ -80,7 +80,7 @@ public class LoginPage extends BaseClass {
             try {
                 logger.info("Attempting to login to: {}", url);
                 driver.get(url);
-                waitForPageLoad();
+                waitForPageLoad(driver);
 
                 // Additional wait for specific slow-loading elements
                 try {

@@ -5,13 +5,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 
-public class Electronics {
+public class Pcc {
 
     private WebDriver driver;
-    public Electronics (WebDriver driver) {
+    public Pcc (WebDriver driver) {
         this.driver = driver;
     }
-    public void electronicsTest() {
+    public void pccTest() {
 
 
         // Click on Electronics

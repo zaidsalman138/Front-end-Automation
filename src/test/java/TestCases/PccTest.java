@@ -1,7 +1,7 @@
 package TestCases;
 
 import Utilities.BaseClass;
-import PageObjects.Electronics;
+import PageObjects.Pcc;
 import Utilities.ExcelUtils;
 import Utilities.PropertyReader;
 
@@ -10,11 +10,11 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 
-public class ElectronicsTest extends BaseClass {
+public class PccTest extends BaseClass {
     @Test
-    public void TestElectronicsSection(){
+    public void TestPccSection(){
  // Initialize the LoginPage object
-        Electronics electronics = new Electronics(driver);
+        Pcc pcc = new Pcc(driver);
 
         // Read test data from Excel
         ExcelUtils excelUtils = new ExcelUtils();
@@ -25,7 +25,7 @@ public class ElectronicsTest extends BaseClass {
         //String password = excelUtils.getCellData(1, 2);
         // Perform login
         
-        electronics.electronicsTest();
+        pcc.pccTest();
 
         // Assert the login success by checking if the URL is as expected
       //  String expectedUrl = PropertyReader.getProperty("baseUrl");
