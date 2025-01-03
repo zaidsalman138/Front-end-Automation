@@ -4,8 +4,12 @@
         <parameter name="browser" value="chrome"/>
         <classes>
 
+
             <class name="TestCases.LoginAllTest"/>
-            <class name="TestCases.CrmTest">
+            <class name="TestCases.CrmTest"/>        
+            <class name="TestCases.BrmTest"/>
+             
+          
 
         </classes>
     </test>

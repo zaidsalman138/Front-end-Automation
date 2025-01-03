@@ -13,10 +13,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-
-import PageObjects.CustomerView;
-import PageObjects.LoginPage;
-
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -25,32 +21,21 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import java.io.File;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.TextStyle;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-//import com.epam.healenium.SelfHealingDriver;
-
 
 
 public class BaseClass {
-    protected static WebDriver driver;
+    protected WebDriver driver;
     protected static PropertyReader propertyReader;
     JavascriptExecutor js = (JavascriptExecutor) driver;
     ActionMap actionMap = new ActionMap();
     private static final Logger logger = LoggerFactory.getLogger(BaseClass.class);
-    public LoginPage loginPage;
-    public CustomerView customerView;
-
     @BeforeClass
     public void setup() {
-        loginPage = new LoginPage(driver);
-        customerView = new CustomerView(driver);
         // Initialize the PropertyReader
         propertyReader = new PropertyReader();
         // Load the configuration properties
@@ -73,8 +58,6 @@ public class BaseClass {
             // Handle unsupported browser types
             throw new IllegalArgumentException("Unsupported browser type: " + browserType);
         }
-        driver.manage().window().maximize();
-        
 
     }
 
@@ -83,7 +66,7 @@ public class BaseClass {
      * @param pixels Number of pixels to scroll. Positive for right, negative for left.
      */
     
-    public void scrollHorizontally(WebDriver driver, WebElement targetElement) {
+    public void scrollHorizontally(WebElement targetElement) {
         try {
             JavascriptExecutor js = (JavascriptExecutor) driver;
             js.executeScript("arguments[0].scrollIntoView(true);", targetElement);
@@ -101,7 +84,7 @@ public class BaseClass {
         }
     }
 
-    public WebElement clickOnElement(WebDriver driver, String locatorType, String locatorValue) {
+    public WebElement clickOnElement(String locatorType, String locatorValue) {
         WebElement element = null;
         switch (locatorType.toLowerCase()) {
             case "id":
@@ -152,7 +135,7 @@ public class BaseClass {
         }
         return element;
     }
-    public WebElement clickandSendTextOnElement(WebDriver driver,String locatorType, String locatorValue, String FieldValue) {
+    public WebElement clickandSendTextOnElement(String locatorType, String locatorValue, String FieldValue) {
         WebElement element = null;
         switch (locatorType.toLowerCase()) {
             case "id":
@@ -211,7 +194,7 @@ public class BaseClass {
         }
         return element;
     }
-    public void scrollDowntoElement( WebDriver driver,String elementType,String elementData) { 
+    public void scrollDowntoElement( String elementType,String elementData) { 
         
       try{      
           WebElement element = findElementByType(elementType, elementData);
@@ -305,7 +288,7 @@ public class BaseClass {
         }
     }
     
-    public void waitForElementToBeClickable(WebDriver driver,By locator, int timeoutInSeconds) {
+    public void waitForElementToBeClickable(By locator, int timeoutInSeconds) {
         WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
         wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
@@ -317,11 +300,11 @@ public class BaseClass {
         actionMap.performAction(driver ,"open browser","");
 
     }
-    public void selectFromDropdown(WebDriver driver,WebElement dropdownElement, String value) {
+    public void selectFromDropdown(WebElement dropdownElement, String value) {
         Select dropdown = new Select(dropdownElement);   //*[@id="select2-drop"]
         dropdown.selectByVisibleText(value);
     }
-    public void selectFromCustomDropdown(WebDriver driver,WebElement dropdownElement, String value) {
+    public void selectFromCustomDropdown(WebElement dropdownElement, String value) {
         dropdownElement.click();
         WebElement option = dropdownElement.findElement(By.xpath("//option[contains(text(), '"+value+"')]"));
         option.click();
@@ -337,12 +320,20 @@ public class BaseClass {
                 driver.switchTo().window(windowHandle);
                 System.out.println("Switched to new window: " + driver.getTitle());
     
+                // Perform your actions on the new window here
+                // Example: driver.findElement(By.id("someElement")).click();
+    
+                // Close the new window if needed
+              //  driver.close();
+    
                 // Break out of the loop once the required window is found and actions are performed
                 break;
             }
         }
     
-                
+        // Switch back to the original window
+       // driver.switchTo().window(originalWindowHandle);
+        //System.out.println("Switched back to original window: " + driver.getTitle());
     }
 
     public void switchToOriginWindow(WebDriver driver) {
@@ -390,9 +381,9 @@ public class BaseClass {
     public String intToString(int num) {
         return Integer.toString(num);
     }
-    public void waitForPageLoad(WebDriver driver) {
+    public void waitForPageLoad() {
         try {
-            
+            @SuppressWarnings("deprecation")
             WebDriverWait wait = new WebDriverWait(driver, 30); // Set initial wait time to 30 seconds
             
             // Wait for document ready state
@@ -446,6 +437,9 @@ public class BaseClass {
             logger.error("Page load wait error: " + e.getMessage());
         }
     }
+    
+    
+    
     public void clickElementMultipleTimes(WebDriver driver, String locator, int times) {
     // Find the element using CSS selector
       WebElement element = driver.findElement(By.xpath(locator));
@@ -466,13 +460,13 @@ public class BaseClass {
         element.isDisplayed();
         element.click();
     }
-    public void mouseOverAndClick(WebDriver driver,String locatorType, String locatorValue) {
+    public void mouseOverAndClick(String locatorType, String locatorValue) {
         Actions actions = new Actions(driver);
         WebElement element = findElementByType(locatorType, locatorValue);
     
         actions.moveToElement(element).click().build().perform();
     }
-    public void mouseOverAndClickChild(WebDriver driver,String parentLocatorType, String parentLocatorValue, String childLocatorType, String childLocatorValue) {
+    public void mouseOverAndClickChild(String parentLocatorType, String parentLocatorValue, String childLocatorType, String childLocatorValue) {
       Actions actions = new Actions(driver);
     
       // Find the parent element and perform mouse over
@@ -487,7 +481,7 @@ public class BaseClass {
        actions.moveToElement(childElement).click().build().perform();
     }
 
-    public void switchToFrame(WebDriver driver,String locatorType, String locatorValue) {
+    public void switchToFrame(String locatorType, String locatorValue) {
         WebDriverWait wait = new WebDriverWait(driver, 10); // 10 seconds wait time
         WebElement frameElement = findElementByType(locatorType, locatorValue);
         wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frameElement));
@@ -500,8 +494,7 @@ public class BaseClass {
             // Fallback to local ChromeDriver if WebDriverManager fails
             System.setProperty("webdriver.chrome.driver", propertyReader.getProperty("chromeDriverPath"));
         }
-        WebDriver driver = new ChromeDriver();
-        
+        driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
@@ -546,7 +539,7 @@ public class BaseClass {
     }
 
     // Overloaded method to find exact href match
-    public WebElement findElementByExactHref(WebDriver driver,String exactHref) {
+    public WebElement findElementByExactHref(String exactHref) {
         try {
             String xpathExpression = "//a[@href='" + exactHref + "']";
             WebDriverWait wait = new WebDriverWait(driver, 10);
@@ -560,14 +553,14 @@ public class BaseClass {
         }
     }
 
-    public void clickButtonByText(WebDriver driver, String buttonText) {
+    public void clickButtonByText(String buttonText) {
         try {
             WebDriverWait wait = new WebDriverWait(driver, 10);
             String xpathExpression = "//button[text()='"+ buttonText +"']";
             WebElement button = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpathExpression)));
             
             button.click();
-            waitForPageLoad(driver);
+            waitForPageLoad();
             logger.debug("Clicked on button with text: '{}'", buttonText);
         } catch (Exception e) {
             logger.error("Failed to click on button with text '{}': {}", buttonText, e.getMessage());
@@ -594,10 +587,10 @@ public class BaseClass {
         }
     }
 
-    public void selectTextFromNestedList(WebDriver driver, String listLocator, String textToSelect) {
+    public void selectTextFromNestedList(String listLocator, String textToSelect) {
         try {
             WebDriverWait wait = new WebDriverWait(driver, 10);
-             WebElement listElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(listLocator)));
+            WebElement listElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(listLocator)));
             
             // Find all ul elements within the list element
             List<WebElement> ulElements = listElement.findElements(By.tagName("li"));
@@ -624,7 +617,7 @@ public class BaseClass {
         }
     }
 
-    public void clickTextFromNestedList(WebDriver driver,String listLocator, String textToClcik) {
+    public void clickTextFromNestedList(String listLocator, String textToClcik) {
         try {
             WebDriverWait wait = new WebDriverWait(driver, 10);
             WebElement listElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(listLocator)));
@@ -649,7 +642,7 @@ public class BaseClass {
         }
     }
 
-    public void clickTextFromNestedList(WebDriver driver,String locatorType, String listLocator, String textToClcik) {
+    public void clickTextFromNestedList(String locatorType, String listLocator, String textToClcik) {
         try {
             WebDriverWait wait = new WebDriverWait(driver, 10);
             By locator = getByLocator(locatorType, listLocator);
@@ -698,7 +691,7 @@ public class BaseClass {
         }
     }
 
-    public void clickOnBlankPage(WebDriver driver, int x, int y) {
+    public void clickOnBlankPage(int x, int y) {
         try {
             JavascriptExecutor js = (JavascriptExecutor) driver;
             String script = "document.elementFromPoint(arguments[0], arguments[1]).click();";
@@ -710,7 +703,7 @@ public class BaseClass {
         }
     }
 
-    public void clickOnElementByXPath(WebDriver driver,String xpath) {
+    public void clickOnElementByXPath(String xpath) {
         try {
             WebElement element = driver.findElement(By.xpath(xpath));
             element.click();
@@ -721,7 +714,7 @@ public class BaseClass {
         }
     }
 
-    public void clickElementByText(WebDriver driver,String tagName, String text) {
+    public void clickElementByText(String tagName, String text) {
         try {
             String xpath = String.format("//%s[text()='%s']", tagName, text);
             WebElement element = driver.findElement(By.xpath(xpath));
@@ -733,18 +726,18 @@ public class BaseClass {
         }
     }
 
-    public void navigateBack(WebDriver driver) {
+    public void navigateBack() {
         try {
             driver.navigate().back();
             logger.debug("Navigated back to the previous page.");
-            waitForPageLoad(driver);
+            waitForPageLoad();
         } catch (Exception e) {
             logger.error("Failed to navigate back: {}", e.getMessage());
             throw new RuntimeException("Failed to navigate back to the previous page", e);
         }
     }
 
-    public void clickLinkByText(WebDriver driver,String linkText) {
+    public void clickLinkByText(String linkText) {
         try {
             WebElement link = driver.findElement(By.linkText(linkText));
             link.click();
@@ -754,58 +747,6 @@ public class BaseClass {
             throw new RuntimeException("Failed to click on link with text '" + linkText + "'", e);
         }
     }
-
-
-    //Select Date One Year Back
-    public void selectDateOneYearBack(WebDriver driver,String byId) throws InterruptedException {
-        try {
-          
-            // Calculate the date one year back
-            LocalDate dateOneYearBack = LocalDate.now().minusYears(1);
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMM-yyyy");
-            String formattedDate = dateOneYearBack.format(formatter);
-            logger.info("Selected date one year back: {}", formattedDate);
-             String monthName = dateOneYearBack.getMonth().getDisplayName(TextStyle.FULL, Locale.ENGLISH);
-            String year = String.valueOf(dateOneYearBack.getYear());
-            // Open the calendar widget
-            WebElement calendarInput = driver.findElement(By.id(byId));
-            calendarInput.click();
-            waitForPageLoad(driver);
-            // Navigate to the desired year and month
-            // This part depends on the specific calendar widget implementation
-            // Example: Click the previous year button until the correct year is displayed
-            logger.info("Navigating to the desired year "+year+" and month "+monthName);
-
-            clickByXpath(driver, "//*[@class='datepicker-days']/table/thead/tr/th[@class='datepicker-switch']");
-            
-            System.out.println("Month: "+monthName);
-            WebElement yearElement = driver.findElement(By.xpath("//*[@class='datepicker-months']/table/thead/tr/th[@class='datepicker-switch']"));
-            while (!yearElement.getText().equals(year)) {
-                System.out.println("Years: "+yearElement.getText());
-                driver.findElement(By.xpath("//*[@class='datepicker-months']/table/thead/tr/th[@class='prev']")).click();
-            }
-            clickByXpath(driver, "//*[@class='month' and text()='"+monthName.substring(0,3)+"']");
-
-
-            // Select the date
-            WebElement dateElement = driver.findElement(By.xpath("//td[@class='day' and text()='" + dateOneYearBack.getDayOfMonth() + "']"));
-            dateElement.click();
-
-        } catch (Exception e) {
-            logger.error("Error selecting date one year back: {}", e.getMessage());
-        }
-    }
-
-    public void clickByName(WebDriver driver,String name) {
-        try {
-            WebElement element = driver.findElement(By.name(name));
-            element.click();
-            logger.debug("Clicked on element with name: '{}'", name);
-        } catch (Exception e) {
-            logger.error("Failed to click on element with name '{}': {}", name, e.getMessage());
-            throw new RuntimeException("Failed to click on element with name '" + name + "'", e);
-        }
-    }
-
     
+  
 }
