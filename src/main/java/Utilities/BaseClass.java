@@ -21,8 +21,12 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.TextStyle;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,6 +40,7 @@ public class BaseClass {
     JavascriptExecutor js = (JavascriptExecutor) driver;
     ActionMap actionMap = new ActionMap();
     private static final Logger logger = LoggerFactory.getLogger(BaseClass.class);
+ 
     @BeforeClass
     public void setup() {
         // Initialize the PropertyReader
@@ -61,6 +66,7 @@ public class BaseClass {
             throw new IllegalArgumentException("Unsupported browser type: " + browserType);
         }
         driver.manage().window().maximize();
+
     }
 
        /**
@@ -747,4 +753,58 @@ public class BaseClass {
             throw new RuntimeException("Failed to click on link with text '" + linkText + "'", e);
         }
     }
+
+
+    //Select Date One Year Back
+    public void selectDateOneYearBack(String byId) throws InterruptedException {
+        try {
+          
+            // Calculate the date one year back
+            LocalDate dateOneYearBack = LocalDate.now().minusYears(1);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMM-yyyy");
+            String formattedDate = dateOneYearBack.format(formatter);
+            logger.info("Selected date one year back: {}", formattedDate);
+             String monthName = dateOneYearBack.getMonth().getDisplayName(TextStyle.FULL, Locale.ENGLISH);
+            String year = String.valueOf(dateOneYearBack.getYear());
+            // Open the calendar widget
+            WebElement calendarInput = driver.findElement(By.id(byId));
+            calendarInput.click();
+            waitForPageLoad();
+            // Navigate to the desired year and month
+            // This part depends on the specific calendar widget implementation
+            // Example: Click the previous year button until the correct year is displayed
+            logger.info("Navigating to the desired year "+year+" and month "+monthName);
+
+            clickByXpath(driver, "//*[@class='datepicker-days']/table/thead/tr/th[@class='datepicker-switch']");
+            
+            System.out.println("Month: "+monthName);
+            WebElement yearElement = driver.findElement(By.xpath("//*[@class='datepicker-months']/table/thead/tr/th[@class='datepicker-switch']"));
+            while (!yearElement.getText().equals(year)) {
+                System.out.println("Years: "+yearElement.getText());
+                driver.findElement(By.xpath("//*[@class='datepicker-months']/table/thead/tr/th[@class='prev']")).click();
+            }
+            clickByXpath(driver, "//*[@class='month' and text()='"+monthName.substring(0,3)+"']");
+
+
+            // Select the date
+            WebElement dateElement = driver.findElement(By.xpath("//td[@class='day' and text()='" + dateOneYearBack.getDayOfMonth() + "']"));
+            dateElement.click();
+
+        } catch (Exception e) {
+            logger.error("Error selecting date one year back: {}", e.getMessage());
+        }
+    }
+
+    public void clickByName(String name) {
+        try {
+            WebElement element = driver.findElement(By.name(name));
+            element.click();
+            logger.debug("Clicked on element with name: '{}'", name);
+        } catch (Exception e) {
+            logger.error("Failed to click on element with name '{}': {}", name, e.getMessage());
+            throw new RuntimeException("Failed to click on element with name '" + name + "'", e);
+        }
+    }
+
+    
 }
