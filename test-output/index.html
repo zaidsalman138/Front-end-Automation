@@ -164,31 +164,28 @@
                   <a name="loginCRM">
                   </a> <!-- loginCRM -->
                   <span class="method-name">loginCRM</span>
-                  <div class="stack-trace">org.openqa.selenium.NoSuchElementException: Unable to locate element: #username
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: &apos;3.8.0&apos;, revision: &apos;924c4067df&apos;, time: &apos;2017-11-30T11:20:39.408Z&apos;
-System info: host: &apos;DESKTOP-J707CE4&apos;, ip: &apos;192.168.0.109&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;23.0.1&apos;
-Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 133.0.3, javascriptEnabled: true, moz:accessibilityChecks: false, moz:buildID: 20241209150345, moz:geckodriverVersion: 0.35.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 17436, moz:profile: C:\Users\HP\AppData\Local\T..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10....}
-Session ID: ecbea9e0-ef2a-4484-a92a-63e13424b338
-*** Element info: {Using=id, value=username}
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:601)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:371)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:417)
-	at org.openqa.selenium.By$ById.findElement(By.java:218)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:363)
-	at PageObjects.LoginPage.enterUsername(LoginPage.java:39)
-	at PageObjects.LoginPage.loginAs(LoginPage.java:69)
-	at TestCases.BrmTest.loginCRM(BrmTest.java:64)
+                  <div class="stack-trace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.id: username (tried for 50 second(s) with 500 MILLISECONDS interval)
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:82)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:231)
+	at PageObjects.LoginPage.loginAs(LoginPage.java:71)
+	at TestCases.BrmTest.loginCRM(BrmTest.java:62)
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
 	at java.base/java.lang.Thread.run(Thread.java:1575)
-... Removed 13 stack frames
+Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.id: username
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.8.0&apos;, revision: &apos;924c4067df&apos;, time: &apos;2017-11-30T11:20:39.408Z&apos;
+System info: host: &apos;DESKTOP-J707CE4&apos;, ip: &apos;192.168.42.112&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;23.0.1&apos;
+Driver info: driver.version: unknown
+	at org.openqa.selenium.support.ui.ExpectedConditions.lambda$findElement$0(ExpectedConditions.java:882)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at org.openqa.selenium.support.ui.ExpectedConditions.findElement(ExpectedConditions.java:881)
+	at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:43)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:205)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:201)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:208)
+	... 15 more
+... Removed 10 stack frames
 </div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
@@ -304,32 +301,32 @@ data.addRows(6);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'testInfraServiceConfiguration')
 data.setCell(0, 2, 'TestCases.BrmTest')
-data.setCell(0, 3, 79225);
+data.setCell(0, 3, 79975);
 data.setCell(1, 0, 1)
 data.setCell(1, 1, 'testBulkOperation')
 data.setCell(1, 2, 'TestCases.BrmTest')
-data.setCell(1, 3, 79159);
+data.setCell(1, 3, 79953);
 data.setCell(2, 0, 2)
-data.setCell(2, 1, 'testSearchCustomerAccount')
+data.setCell(2, 1, 'loginCRM')
 data.setCell(2, 2, 'TestCases.BrmTest')
-data.setCell(2, 3, 26849);
+data.setCell(2, 3, 61510);
 data.setCell(3, 0, 3)
-data.setCell(3, 1, 'loginCRM')
+data.setCell(3, 1, 'testSearchCustomerAccount')
 data.setCell(3, 2, 'TestCases.BrmTest')
-data.setCell(3, 3, 18507);
+data.setCell(3, 3, 28674);
 data.setCell(4, 0, 4)
-data.setCell(4, 1, 'testSearchBill')
+data.setCell(4, 1, 'testSearchInventory')
 data.setCell(4, 2, 'TestCases.BrmTest')
-data.setCell(4, 3, 3209);
+data.setCell(4, 3, 3964);
 data.setCell(5, 0, 5)
-data.setCell(5, 1, 'testSearchInventory')
+data.setCell(5, 1, 'testSearchBill')
 data.setCell(5, 2, 'TestCases.BrmTest')
-data.setCell(5, 3, 2566);
+data.setCell(5, 3, 3897);
 window.suiteTableData['TAL_One_Sanity_Suite']= { tableData: data, tableDiv: 'times-div-TAL_One_Sanity_Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 6 minutes</span>
+              <span class="suite-total-time">Total running time: 7 minutes</span>
               <div id="times-div-TAL_One_Sanity_Suite">
               </div> <!-- times-div-TAL_One_Sanity_Suite -->
             </div> <!-- times-div -->
@@ -364,75 +361,75 @@ return data;
                 <img src="failed.png">
                 </img>
                 <span class="method-name">loginCRM</span>
-                <span class="method-start">25484 ms</span>
+                <span class="method-start">32553 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">44007 ms</span>
+                <span class="method-start">94101 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-method before">
                 <span class="method-name">setup</span>
-                <span class="method-start">45693 ms</span>
+                <span class="method-start">96004 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">testSearchCustomerAccount</span>
-                <span class="method-start">66169 ms</span>
+                <span class="method-start">128576 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">93024 ms</span>
+                <span class="method-start">157258 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-method before">
                 <span class="method-name">setup</span>
-                <span class="method-start">94452 ms</span>
+                <span class="method-start">159349 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">testSearchBill</span>
-                <span class="method-start">116918 ms</span>
+                <span class="method-start">204003 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">120129 ms</span>
+                <span class="method-start">207904 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-method before">
                 <span class="method-name">setup</span>
-                <span class="method-start">121519 ms</span>
+                <span class="method-start">210044 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">testInfraServiceConfiguration</span>
-                <span class="method-start">142178 ms</span>
+                <span class="method-start">238484 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">221408 ms</span>
+                <span class="method-start">318464 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-method before">
                 <span class="method-name">setup</span>
-                <span class="method-start">222996 ms</span>
+                <span class="method-start">320401 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">testBulkOperation</span>
-                <span class="method-start">250321 ms</span>
+                <span class="method-start">347922 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">329483 ms</span>
+                <span class="method-start">427879 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-method before">
                 <span class="method-name">setup</span>
-                <span class="method-start">331087 ms</span>
+                <span class="method-start">429821 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">testSearchInventory</span>
-                <span class="method-start">356247 ms</span>
+                <span class="method-start">456658 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">358818 ms</span>
+                <span class="method-start">460628 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-class after">
                 <span class="method-name">cleanUp</span>
-                <span class="method-start">360109 ms</span>
+                <span class="method-start">462712 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

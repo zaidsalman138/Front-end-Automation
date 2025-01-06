@@ -2,52 +2,26 @@
 <testng-results ignored="0" total="6" passed="5" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-01-03T19:09:55 PKT" name="TAL One Sanity Suite" finished-at="2025-01-03T19:15:55 PKT" duration-ms="360148">
+  <suite started-at="2025-01-05T21:56:57 PKT" name="TAL One Sanity Suite" finished-at="2025-01-05T22:04:39 PKT" duration-ms="462750">
     <groups>
     </groups>
-    <test started-at="2025-01-03T19:09:55 PKT" name="Login Functionality Tests" finished-at="2025-01-03T19:15:55 PKT" duration-ms="360148">
+    <test started-at="2025-01-05T21:56:57 PKT" name="Login Functionality Tests" finished-at="2025-01-05T22:04:39 PKT" duration-ms="462750">
       <class name="TestCases.BrmTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-03T19:09:55 PKT" name="setup" finished-at="2025-01-03T19:10:20 PKT" duration-ms="25430" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-05T21:56:57 PKT" name="setup" finished-at="2025-01-05T21:57:29 PKT" duration-ms="32451" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="loginCRM()[pri:0, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-03T19:10:20 PKT" name="loginCRM" finished-at="2025-01-03T19:10:39 PKT" duration-ms="18507" status="FAIL">
-          <exception class="org.openqa.selenium.NoSuchElementException">
+        <test-method signature="loginCRM()[pri:0, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-05T21:57:29 PKT" name="loginCRM" finished-at="2025-01-05T21:58:31 PKT" duration-ms="61510" status="FAIL">
+          <exception class="org.openqa.selenium.TimeoutException">
             <message>
-              <![CDATA[Unable to locate element: #username
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '3.8.0', revision: '924c4067df', time: '2017-11-30T11:20:39.408Z'
-System info: host: 'DESKTOP-J707CE4', ip: '192.168.0.109', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '23.0.1'
-Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 133.0.3, javascriptEnabled: true, moz:accessibilityChecks: false, moz:buildID: 20241209150345, moz:geckodriverVersion: 0.35.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 17436, moz:profile: C:\Users\HP\AppData\Local\T..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10....}
-Session ID: ecbea9e0-ef2a-4484-a92a-63e13424b338
-*** Element info: {Using=id, value=username}]]>
+              <![CDATA[Expected condition failed: waiting for visibility of element located by By.id: username (tried for 50 second(s) with 500 MILLISECONDS interval)]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.NoSuchElementException: Unable to locate element: #username
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '3.8.0', revision: '924c4067df', time: '2017-11-30T11:20:39.408Z'
-System info: host: 'DESKTOP-J707CE4', ip: '192.168.0.109', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '23.0.1'
-Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 133.0.3, javascriptEnabled: true, moz:accessibilityChecks: false, moz:buildID: 20241209150345, moz:geckodriverVersion: 0.35.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 17436, moz:profile: C:\Users\HP\AppData\Local\T..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10....}
-Session ID: ecbea9e0-ef2a-4484-a92a-63e13424b338
-*** Element info: {Using=id, value=username}
-at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
-at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:485)
-at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
-at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
-at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:601)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:371)
-at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:417)
-at org.openqa.selenium.By$ById.findElement(By.java:218)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:363)
-at PageObjects.LoginPage.enterUsername(LoginPage.java:39)
-at PageObjects.LoginPage.loginAs(LoginPage.java:69)
-at TestCases.BrmTest.loginCRM(BrmTest.java:64)
+              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.id: username (tried for 50 second(s) with 500 MILLISECONDS interval)
+at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:82)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:231)
+at PageObjects.LoginPage.loginAs(LoginPage.java:71)
+at TestCases.BrmTest.loginCRM(BrmTest.java:62)
 at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
@@ -61,77 +35,90 @@ at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
 at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
 at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
 at java.base/java.lang.Thread.run(Thread.java:1575)
+Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.id: username
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.8.0', revision: '924c4067df', time: '2017-11-30T11:20:39.408Z'
+System info: host: 'DESKTOP-J707CE4', ip: '192.168.42.112', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '23.0.1'
+Driver info: driver.version: unknown
+at org.openqa.selenium.support.ui.ExpectedConditions.lambda$findElement$0(ExpectedConditions.java:882)
+at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+at org.openqa.selenium.support.ui.ExpectedConditions.findElement(ExpectedConditions.java:881)
+at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:43)
+at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:205)
+at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:201)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:208)
+... 15 more
 ]]>
             </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
+          </exception> <!-- org.openqa.selenium.TimeoutException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loginCRM -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-03T19:10:39 PKT" name="tearDown" finished-at="2025-01-03T19:10:40 PKT" duration-ms="1683" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-05T21:58:31 PKT" name="tearDown" finished-at="2025-01-05T21:58:33 PKT" duration-ms="1898" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-03T19:10:41 PKT" name="setup" finished-at="2025-01-03T19:11:01 PKT" duration-ms="20474" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-05T21:58:33 PKT" name="setup" finished-at="2025-01-05T21:59:05 PKT" duration-ms="32570" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="testSearchCustomerAccount()[pri:2, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-03T19:11:01 PKT" name="testSearchCustomerAccount" description="Verify Search Customer Account functionality" finished-at="2025-01-03T19:11:28 PKT" duration-ms="26849" status="PASS">
+        <test-method signature="testSearchCustomerAccount()[pri:2, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-05T21:59:05 PKT" name="testSearchCustomerAccount" description="Verify Search Customer Account functionality" finished-at="2025-01-05T21:59:34 PKT" duration-ms="28674" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSearchCustomerAccount -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-03T19:11:28 PKT" name="tearDown" finished-at="2025-01-03T19:11:29 PKT" duration-ms="1426" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-05T21:59:34 PKT" name="tearDown" finished-at="2025-01-05T21:59:36 PKT" duration-ms="2087" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-03T19:11:29 PKT" name="setup" finished-at="2025-01-03T19:11:52 PKT" duration-ms="22463" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-05T21:59:36 PKT" name="setup" finished-at="2025-01-05T22:00:21 PKT" duration-ms="44651" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="testSearchBill()[pri:3, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-03T19:11:52 PKT" name="testSearchBill" description="Test Search Bill functionality" finished-at="2025-01-03T19:11:55 PKT" duration-ms="3209" status="PASS">
+        <test-method signature="testSearchBill()[pri:3, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-05T22:00:21 PKT" name="testSearchBill" description="Test Search Bill functionality" finished-at="2025-01-05T22:00:25 PKT" duration-ms="3897" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSearchBill -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-03T19:11:55 PKT" name="tearDown" finished-at="2025-01-03T19:11:56 PKT" duration-ms="1388" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-05T22:00:25 PKT" name="tearDown" finished-at="2025-01-05T22:00:27 PKT" duration-ms="2136" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-03T19:11:56 PKT" name="setup" finished-at="2025-01-03T19:12:17 PKT" duration-ms="20656" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-05T22:00:27 PKT" name="setup" finished-at="2025-01-05T22:00:55 PKT" duration-ms="28437" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="testInfraServiceConfiguration()[pri:4, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-03T19:12:17 PKT" name="testInfraServiceConfiguration" description="Test Infra Service Configuration functionality" finished-at="2025-01-03T19:13:36 PKT" duration-ms="79225" status="PASS">
+        <test-method signature="testInfraServiceConfiguration()[pri:4, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-05T22:00:55 PKT" name="testInfraServiceConfiguration" description="Test Infra Service Configuration functionality" finished-at="2025-01-05T22:02:15 PKT" duration-ms="79975" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testInfraServiceConfiguration -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-03T19:13:36 PKT" name="tearDown" finished-at="2025-01-03T19:13:38 PKT" duration-ms="1584" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-05T22:02:15 PKT" name="tearDown" finished-at="2025-01-05T22:02:17 PKT" duration-ms="1934" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-03T19:13:38 PKT" name="setup" finished-at="2025-01-03T19:14:05 PKT" duration-ms="27322" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-05T22:02:17 PKT" name="setup" finished-at="2025-01-05T22:02:45 PKT" duration-ms="27519" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="testBulkOperation()[pri:5, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-03T19:14:05 PKT" name="testBulkOperation" description="Test Bulk Operation functionality" finished-at="2025-01-03T19:15:24 PKT" duration-ms="79159" status="PASS">
+        <test-method signature="testBulkOperation()[pri:5, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-05T22:02:45 PKT" name="testBulkOperation" description="Test Bulk Operation functionality" finished-at="2025-01-05T22:04:05 PKT" duration-ms="79953" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testBulkOperation -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-03T19:15:24 PKT" name="tearDown" finished-at="2025-01-03T19:15:26 PKT" duration-ms="1601" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-05T22:04:05 PKT" name="tearDown" finished-at="2025-01-05T22:04:06 PKT" duration-ms="1938" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-03T19:15:26 PKT" name="setup" finished-at="2025-01-03T19:15:51 PKT" duration-ms="25157" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-05T22:04:06 PKT" name="setup" finished-at="2025-01-05T22:04:33 PKT" duration-ms="26836" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="testSearchInventory()[pri:6, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-03T19:15:51 PKT" name="testSearchInventory" description="Test Search Inventory functionality" finished-at="2025-01-03T19:15:54 PKT" duration-ms="2566" status="PASS">
+        <test-method signature="testSearchInventory()[pri:6, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-05T22:04:33 PKT" name="testSearchInventory" description="Test Search Inventory functionality" finished-at="2025-01-05T22:04:37 PKT" duration-ms="3964" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSearchInventory -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-03T19:15:54 PKT" name="tearDown" finished-at="2025-01-03T19:15:55 PKT" duration-ms="1287" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-05T22:04:37 PKT" name="tearDown" finished-at="2025-01-05T22:04:39 PKT" duration-ms="2080" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="cleanUp()[pri:0, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-03T19:15:55 PKT" name="cleanUp" finished-at="2025-01-03T19:15:55 PKT" duration-ms="2" status="PASS">
+        <test-method is-config="true" signature="cleanUp()[pri:0, instance:TestCases.BrmTest@14dd7b39]" started-at="2025-01-05T22:04:39 PKT" name="cleanUp" finished-at="2025-01-05T22:04:39 PKT" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- cleanUp -->

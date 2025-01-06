@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>5/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Fri Jan 03 19:09:55 PKT 2025</td>
+<td>Started on:</td><td>Sun Jan 05 21:56:57 PKT 2025</td>
 </tr>
-<tr><td>Total time:</td><td>360 seconds (360148 ms)</td>
+<tr><td>Total time:</td><td>462 seconds (462750 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -76,55 +76,33 @@ function toggleAllBoxes() {
 </tr>
 <tr>
 <td title='TestCases.BrmTest.loginCRM()'><b>loginCRM</b><br>Test class: TestCases.BrmTest</td>
-<td><div><pre>org.openqa.selenium.NoSuchElementException: Unable to locate element: #username
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: &apos;3.8.0&apos;, revision: &apos;924c4067df&apos;, time: &apos;2017-11-30T11:20:39.408Z&apos;
-System info: host: &apos;DESKTOP-J707CE4&apos;, ip: &apos;192.168.0.109&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;23.0.1&apos;
-Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 133.0.3, javascriptEnabled: true, moz:accessibilityChecks: false, moz:buildID: 20241209150345, moz:geckodriverVersion: 0.35.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 17436, moz:profile: C:\Users\HP\AppData\Local\T..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10....}
-Session ID: ecbea9e0-ef2a-4484-a92a-63e13424b338
-*** Element info: {Using=id, value=username}
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:601)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:371)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:417)
-	at org.openqa.selenium.By$ById.findElement(By.java:218)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:363)
-	at PageObjects.LoginPage.enterUsername(LoginPage.java:39)
-	at PageObjects.LoginPage.loginAs(LoginPage.java:69)
-	at TestCases.BrmTest.loginCRM(BrmTest.java:64)
+<td><div><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.id: username (tried for 50 second(s) with 500 MILLISECONDS interval)
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:82)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:231)
+	at PageObjects.LoginPage.loginAs(LoginPage.java:71)
+	at TestCases.BrmTest.loginCRM(BrmTest.java:62)
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
 	at java.base/java.lang.Thread.run(Thread.java:1575)
-... Removed 13 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1657574093", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1657574093'><pre>org.openqa.selenium.NoSuchElementException: Unable to locate element: #username
+Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.id: username
 For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: &apos;3.8.0&apos;, revision: &apos;924c4067df&apos;, time: &apos;2017-11-30T11:20:39.408Z&apos;
-System info: host: &apos;DESKTOP-J707CE4&apos;, ip: &apos;192.168.0.109&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;23.0.1&apos;
-Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 133.0.3, javascriptEnabled: true, moz:accessibilityChecks: false, moz:buildID: 20241209150345, moz:geckodriverVersion: 0.35.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 17436, moz:profile: C:\Users\HP\AppData\Local\T..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10....}
-Session ID: ecbea9e0-ef2a-4484-a92a-63e13424b338
-*** Element info: {Using=id, value=username}
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:485)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:601)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:371)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:417)
-	at org.openqa.selenium.By$ById.findElement(By.java:218)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:363)
-	at PageObjects.LoginPage.enterUsername(LoginPage.java:39)
-	at PageObjects.LoginPage.loginAs(LoginPage.java:69)
-	at TestCases.BrmTest.loginCRM(BrmTest.java:64)
+System info: host: &apos;DESKTOP-J707CE4&apos;, ip: &apos;192.168.42.112&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;23.0.1&apos;
+Driver info: driver.version: unknown
+	at org.openqa.selenium.support.ui.ExpectedConditions.lambda$findElement$0(ExpectedConditions.java:882)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at org.openqa.selenium.support.ui.ExpectedConditions.findElement(ExpectedConditions.java:881)
+	at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:43)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:205)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:201)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:208)
+	... 15 more
+... Removed 10 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1744339948", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1744339948'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.id: username (tried for 50 second(s) with 500 MILLISECONDS interval)
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:82)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:231)
+	at PageObjects.LoginPage.loginAs(LoginPage.java:71)
+	at TestCases.BrmTest.loginCRM(BrmTest.java:62)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
@@ -138,8 +116,21 @@ Session ID: ecbea9e0-ef2a-4484-a92a-63e13424b338
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
 	at java.base/java.lang.Thread.run(Thread.java:1575)
+Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.id: username
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.8.0&apos;, revision: &apos;924c4067df&apos;, time: &apos;2017-11-30T11:20:39.408Z&apos;
+System info: host: &apos;DESKTOP-J707CE4&apos;, ip: &apos;192.168.42.112&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;23.0.1&apos;
+Driver info: driver.version: unknown
+	at org.openqa.selenium.support.ui.ExpectedConditions.lambda$findElement$0(ExpectedConditions.java:882)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at org.openqa.selenium.support.ui.ExpectedConditions.findElement(ExpectedConditions.java:881)
+	at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:43)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:205)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:201)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:208)
+	... 15 more
 </pre></div></td>
-<td>18</td>
+<td>61</td>
 <td>TestCases.BrmTest@14dd7b39</td></tr>
 </table><p>
 <table width='100%' border='1' class='invocation-passed'>
@@ -150,24 +141,24 @@ Session ID: ecbea9e0-ef2a-4484-a92a-63e13424b338
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='TestCases.BrmTest.testBulkOperation()'><b>testBulkOperation</b><br>Test class: TestCases.BrmTest<br>Test method: Test Bulk Operation functionality</td>
-<td></td>
-<td>79</td>
-<td>TestCases.BrmTest@14dd7b39</td></tr>
-<tr>
 <td title='TestCases.BrmTest.testSearchBill()'><b>testSearchBill</b><br>Test class: TestCases.BrmTest<br>Test method: Test Search Bill functionality</td>
 <td></td>
 <td>3</td>
 <td>TestCases.BrmTest@14dd7b39</td></tr>
 <tr>
-<td title='TestCases.BrmTest.testSearchInventory()'><b>testSearchInventory</b><br>Test class: TestCases.BrmTest<br>Test method: Test Search Inventory functionality</td>
-<td></td>
-<td>2</td>
-<td>TestCases.BrmTest@14dd7b39</td></tr>
-<tr>
 <td title='TestCases.BrmTest.testSearchCustomerAccount()'><b>testSearchCustomerAccount</b><br>Test class: TestCases.BrmTest<br>Test method: Verify Search Customer Account functionality</td>
 <td></td>
-<td>26</td>
+<td>28</td>
+<td>TestCases.BrmTest@14dd7b39</td></tr>
+<tr>
+<td title='TestCases.BrmTest.testSearchInventory()'><b>testSearchInventory</b><br>Test class: TestCases.BrmTest<br>Test method: Test Search Inventory functionality</td>
+<td></td>
+<td>3</td>
+<td>TestCases.BrmTest@14dd7b39</td></tr>
+<tr>
+<td title='TestCases.BrmTest.testBulkOperation()'><b>testBulkOperation</b><br>Test class: TestCases.BrmTest<br>Test method: Test Bulk Operation functionality</td>
+<td></td>
+<td>79</td>
 <td>TestCases.BrmTest@14dd7b39</td></tr>
 <tr>
 <td title='TestCases.BrmTest.testInfraServiceConfiguration()'><b>testInfraServiceConfiguration</b><br>Test class: TestCases.BrmTest<br>Test method: Test Infra Service Configuration functionality</td>

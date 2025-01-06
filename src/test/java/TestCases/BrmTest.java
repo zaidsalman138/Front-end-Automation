@@ -57,9 +57,7 @@ public class BrmTest extends BaseClass {
 	        // Navigate and wait for page load
 	        driver.get(propertyReader.getProperty("brmUrl"));
 	        waitForPageLoad();
-	        
-	        
-	        
+	                
 	        // Perform login
 	        loginPage.loginAs(username, password);
 	        waitForPageLoad();  // Wait after login
