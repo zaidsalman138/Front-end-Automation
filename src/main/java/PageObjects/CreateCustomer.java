@@ -88,7 +88,7 @@ public class CreateCustomer extends BaseClass {
         clickOnElement(driver,"name","saveButton");
        // scrollDown(0, 400);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        // Save the new custome
+        // Save the new customer
         switchToOriginWindow(driver);
         waitForElementToBeClickable(driver,By.xpath("//button[contains(text(), 'Save')]"), 60);
         waitAndClick(driver,wait,By.xpath("//button[contains(text(), 'Save')]"));

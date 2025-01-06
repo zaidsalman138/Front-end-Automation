@@ -87,14 +87,14 @@ public class SearchCustomerAccount extends BaseClass{
     // Method to click on "Search Customer Account"
     public void clickSearchCustomerAccountOption() {
         logger.info("Clicking on 'Search Customer Account' option.");
-        clickOnElement("xpath", "//span[normalize-space()='Search Customer Account']");
+        clickOnElement(driver, "xpath", "//span[normalize-space()='Search Customer Account']");
         logger.info("Clicked on 'Search Customer Account' option.");
     }
 
     // Method to switch to iframe
     public void switchToIframe() {
         logger.info("Switching to the iframe.");
-        switchToFrame("xpath", "//iframe[@id='zk_comp_87']");
+        switchToFrame(driver, "xpath", "//iframe[@id='zk_comp_87']");
         logger.info("Switched to the iframe.");
     }
 
@@ -176,7 +176,7 @@ public class SearchCustomerAccount extends BaseClass{
     // Method to enter a value into the parameter field
     public void enterParameterValue(String value) {
         logger.info("Entering value '{}' into the parameter field.", value);
-        sendTextOnElement("xpath", "//input[@id='c_strparametervalue']", value);
+        sendTextOnElement(driver,"xpath", "//input[@id='c_strparametervalue']", value);
         logger.info("Entered value '{}' into the parameter field.", value);
     }
 

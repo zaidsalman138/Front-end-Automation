@@ -9,39 +9,15 @@
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
 <tr><th colspan="8">TAL One Sanity Suite</th></tr>
-<tr><td><a href="#t0">Login Functionality Tests</a></td><td class="num">5</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">360,148</td><td></td><td></td></tr>
+<tr><td><a href="#t0">Login Functionality Tests</a></td><td class="num">6</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">243,909</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">TAL One Sanity Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Login Functionality Tests &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">TestCases.BrmTest</td><td><a href="#m0">loginCRM</a></td><td rowspan="1">1735913420792</td><td rowspan="1">18507</td></tr><tr><th colspan="4">Login Functionality Tests &#8212; passed</th></tr><tr class="passedeven"><td rowspan="5">TestCases.BrmTest</td><td><a href="#m1">testBulkOperation</a></td><td rowspan="1">1735913645629</td><td rowspan="1">79159</td></tr><tr class="passedeven"><td><a href="#m2">testInfraServiceConfiguration</a></td><td rowspan="1">1735913537486</td><td rowspan="1">79225</td></tr><tr class="passedeven"><td><a href="#m3">testSearchBill</a></td><td rowspan="1">1735913512226</td><td rowspan="1">3209</td></tr><tr class="passedeven"><td><a href="#m4">testSearchCustomerAccount</a></td><td rowspan="1">1735913461477</td><td rowspan="1">26849</td></tr><tr class="passedeven"><td><a href="#m5">testSearchInventory</a></td><td rowspan="1">1735913751555</td><td rowspan="1">2566</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">TAL One Sanity Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Login Functionality Tests &#8212; passed</th></tr><tr class="passedeven"><td rowspan="6">TestCases.CrmTest</td><td><a href="#m0">loginCRM</a></td><td rowspan="1">1736159880878</td><td rowspan="1">84450</td></tr><tr class="passedeven"><td><a href="#m1">testPaymentModuleNavigation</a></td><td rowspan="1">1736159965410</td><td rowspan="1">32364</td></tr><tr class="passedeven"><td><a href="#m2">testProductsPageNavigation</a></td><td rowspan="1">1736159997805</td><td rowspan="1">16151</td></tr><tr class="passedeven"><td><a href="#m3">verifyInventory</a></td><td rowspan="1">1736160075480</td><td rowspan="1">16540</td></tr><tr class="passedeven"><td><a href="#m4">verifyOrdersNavigation</a></td><td rowspan="1">1736160014002</td><td rowspan="1">61473</td></tr><tr class="passedeven"><td><a href="#m5">verifyTicketsNavigation</a></td><td rowspan="1">1736160092026</td><td rowspan="1">26091</td></tr></tbody>
 </table>
-<h2>Login Functionality Tests</h2><h3 id="m0">TestCases.BrmTest#loginCRM</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.openqa.selenium.NoSuchElementException: Unable to locate element: #username
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: &apos;3.8.0&apos;, revision: &apos;924c4067df&apos;, time: &apos;2017-11-30T11:20:39.408Z&apos;
-System info: host: &apos;DESKTOP-J707CE4&apos;, ip: &apos;192.168.0.109&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;23.0.1&apos;
-Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 133.0.3, javascriptEnabled: true, moz:accessibilityChecks: false, moz:buildID: 20241209150345, moz:geckodriverVersion: 0.35.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 17436, moz:profile: C:\Users\HP\AppData\Local\T..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10....}
-Session ID: ecbea9e0-ef2a-4484-a92a-63e13424b338
-*** Element info: {Using=id, value=username}
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:601)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:371)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:417)
-	at org.openqa.selenium.By$ById.findElement(By.java:218)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:363)
-	at PageObjects.LoginPage.enterUsername(LoginPage.java:39)
-	at PageObjects.LoginPage.loginAs(LoginPage.java:69)
-	at TestCases.BrmTest.loginCRM(BrmTest.java:64)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
-	at java.base/java.lang.Thread.run(Thread.java:1575)
-... Removed 13 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m1">TestCases.BrmTest#testBulkOperation</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m2">TestCases.BrmTest#testInfraServiceConfiguration</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m3">TestCases.BrmTest#testSearchBill</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m4">TestCases.BrmTest#testSearchCustomerAccount</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m5">TestCases.BrmTest#testSearchInventory</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h2>Login Functionality Tests</h2><h3 id="m0">TestCases.CrmTest#loginCRM</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m1">TestCases.CrmTest#testPaymentModuleNavigation</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m2">TestCases.CrmTest#testProductsPageNavigation</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m3">TestCases.CrmTest#verifyInventory</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m4">TestCases.CrmTest#verifyOrdersNavigation</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m5">TestCases.CrmTest#verifyTicketsNavigation</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>

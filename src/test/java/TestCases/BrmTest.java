@@ -32,9 +32,9 @@ public class BrmTest extends BaseClass {
         PropertyReader propertyReader = new PropertyReader();
 
         driver.get(propertyReader.getProperty("brmUrl"));
-        waitForPageLoad();
-        loginPage.loginAs(propertyReader.getProperty("username"), propertyReader.getProperty("password"));
-        waitForPageLoad();
+        waitForPageLoad(driver);
+        loginPage.loginAs(driver, propertyReader.getProperty("username"), propertyReader.getProperty("password"));
+        waitForPageLoad(driver);
 
         String expectedBrmUrl = "http://dbrmsit.one.al/dbrm/om/";
         String actualBrmUrl = driver.getCurrentUrl();
@@ -56,13 +56,11 @@ public class BrmTest extends BaseClass {
 	        
 	        // Navigate and wait for page load
 	        driver.get(propertyReader.getProperty("brmUrl"));
-	        waitForPageLoad();
-	        
-	        
-	        
+	        waitForPageLoad(driver);
+	                
 	        // Perform login
-	        loginPage.loginAs(username, password);
-	        waitForPageLoad();  // Wait after login
+	        loginPage.loginAs(driver,username, password);
+	        waitForPageLoad(driver);  // Wait after login
 	        
 	        String expectedBrmUrl = "http://dbrmsit.one.al/dbrm/om/";
 	        Thread.sleep(5000);

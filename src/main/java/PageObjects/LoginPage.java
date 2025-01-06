@@ -19,6 +19,7 @@ public class LoginPage extends BaseClass {
 
     private static final Logger logger = LogManager.getLogger(LoginPage.class);
     private WebDriver driver;
+    private WebDriverWait wait;
      // Create an instance of JavascriptExecutor
     JavascriptExecutor js = (JavascriptExecutor) driver;
     ActionMap actionMap = new ActionMap();
@@ -31,6 +32,7 @@ public class LoginPage extends BaseClass {
     // Constructor to initialize the WebDriver
     public LoginPage(WebDriver driver) {
         this.driver = driver;
+        this.wait = new WebDriverWait(driver, 50);
     }
     
     // Method to enter username
