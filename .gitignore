@@ -3,4 +3,9 @@ target/
 allure-results/
 drivers/
 test-output/
+.classpath
+.settings
+.idea
+.vscode
+screenshots/
 logs/
