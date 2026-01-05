@@ -6,11 +6,12 @@
 
 		<!--	
 			<class name="TestCases.LoginAllTest"/>
-			-->
-            <class name="TestCases.CrmTest"/>  
-            <class name="TestCases.BrmTest"/>
+			<class name="TestCases.BrmTest"/>
              
              <class name="TestCases.WomTest"/>
+			-->
+            <class name="TestCases.CrmTest"/>  
+            
           
 
         </classes>

@@ -164,14 +164,14 @@ public class BrmTest extends BaseClass {
 
 	        // Perform actions using the SearchInventory page object     
 	            searchInventory.hoverOverInventoryMenu();
-	            searchInventory.clickSearchInventoryOption();
-	            searchInventory.switchToIframe();
-	            searchInventory.validateSearchButtonPresence();
-	            searchInventory.validateResetButtonPresence();
-	            searchInventory.validateInventoryGroup();
-	            searchInventory.validateInventorySubgroup();
-	            searchInventory.validateInventoryStatus();
-	      
+				searchInventory.clickSearchInventoryOption();
+				searchInventory.switchToIframe();
+				searchInventory.validateSearchButtonPresence();
+				searchInventory.validateResetButtonPresence();
+				searchInventory.validateInventoryGroup();
+				searchInventory.validateInventorySubgroup();
+				searchInventory.validateInventoryStatus();
+
 	    }
 	 
 	 
