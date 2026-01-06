@@ -43,5 +43,5 @@ The framework follows **industry-standard automation practices** and is designed
 
 ## Author
 
-**Muhammad Rayan Ahmad**  
+**Zaid Salman**  
 Senior QA Automation Engineer
